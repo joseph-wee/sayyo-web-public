@@ -27,12 +27,10 @@ import {
   text_google_play,
 } from "../../assets";
 import { Background, Footer, Header } from "../../components";
-import SayyoMeta from "../../components/SayyoMeta";
 
 export default function Home() {
   return (
     <>
-      <SayyoMeta />
       <div className="relative pb-[264px] md720:pb-[173px] tall:pb-0">
         <Header.En />
         <Background />

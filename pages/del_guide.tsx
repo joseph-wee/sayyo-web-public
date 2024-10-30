@@ -1,12 +1,10 @@
 import React from "react";
 
 import { Footer, Header } from "../components";
-import SayyoMeta from "../components/SayyoMeta";
 
 const del_guide = () => {
   return (
     <>
-      <SayyoMeta />
       <div className="relative pb-[264px] md720:pb-[173px] tall:pb-0">
         <Header.Green />
 
