@@ -13,24 +13,24 @@ import {
   icon_recruit,
   icon_sale,
   icon_sports,
-  img_chat_vn,
-  img_discover_vn,
+  img_chat,
+  img_discover,
   img_man,
   img_place,
-  img_post_vn,
-  img_profile_vn,
+  img_post,
+  img_profile,
   img_woman,
   logo_sayyo,
   logo_sayyo_medium,
   text_app_store,
   text_google_play,
-} from "../assets";
-import { Background, Footer, Header } from "../components";
+} from "../../assets";
+import { Background, Footer, Header } from "../../components";
 
 export default function Home() {
   return (
     <div className="relative pb-[264px] md720:pb-[173px] tall:pb-0">
-      <Header />
+      <Header.En />
       <Background />
       {/** content */}
       <div className="relative z-10 mx-auto top-0 pt-[200px] max-w-[1280px] md1920:pt-[10.42vw] md720:max-w-[328px] md720:pt-[74px]">
@@ -42,9 +42,9 @@ export default function Home() {
           md720:w-[101px] md720:h-[48px]"
         />
         <h3 className="mb-[140px] text-center font-Sriracha text-[38px] text-sayyo_wht leading-[45.6px] md1920:mb-[7.291vw] md1920:text-[1.979vw] md1920:leading-[2.375vw] md720:mb-[48px] md720:text-[11px] md720:leading-[13.2px]">
-          Hãy kết nối với những người giải
+          Let’s connect with
           <br />
-          quyết vấn đề tại địa phương!
+          local problem solvers!
         </h3>
         {/** app qr code */}
         <div className="m-auto mb-[89px] pl-[86px] pr-[116.9px] w-[1180px] h-[179px] flex items-center bg-sayyo_wht rounded-[25px] shadow-[0px_4.972px_24.861px_0px_rgba(0,0,0,0.25)] md1920:mb-[4.635vw] md1920:pl-[4.479vw] md1920:pr-[6.089vw] md1920:w-[61.458vw] md1920:h-[9.322vw] md1920:rounded-[1.302vw] md720:pl-[26.56px] md720:pr-[26.1px] md720:w-[328px] md720:h-[49.6px] md720:rounded-[6.89px] md720:mb-[24.66px]">
@@ -99,28 +99,27 @@ export default function Home() {
           />
 
           <p className="text-sayyo_l2 text-center font-Inter text-[28px] leading-[36.4px] md1920:text-[1.458vw] md1920:leading-[1.896vw] md720:text-[11px] md720:leading-[14.3px] md760:text-[11px]  md720:mb-[2.09px]">
-            Gửi người dân địa phương của tôi
+            To my local people
           </p>
           <strong className="block mb-[9px] text-sayyo_l2 text-center font-Sriracha text-[58px] font-normal leading-[75.4px] md1920:mb-[0.469vw] md1920:text-[3.021vw] md1920:leading-[3.927vw] md720:text-[16px] md720:leading-[20.8px] md720:mb-[2.27px]">
-            Yêu cầu làm, làm cho họ
+            Ask to do, do for them
           </strong>
           <p className="text-sayyo_subtext text-center font-Inter text-[18px] font-medium leading-[23.4px]  md720:text-[11px] md1920_970:text-[0.938vw] md1920_970:leading-[1.219vw] md970:text-[11px] md720:font-normal md720:leading-[14.3px]">
-            Chia sẻ tài năng của bạn
+            Share your talents
           </p>
         </div>
         {/** free */}
-        <strong className="block text-sayyo_l2 text-center font-Sriracha text-[58px] leading-[75.4px] tracking-[-1.16px] md1920:text-[3.021vw] md1920:leading-[3.927vw] md720:mb-[1.16px] md720:text-[16px] md720:leading-[20.8px] md720:tracking-[-0.32px]">
-          Miễn phí
+        <strong className="block text-sayyo_l2 text-center font-Sriracha text-[58px] leading-[75.4px] tracking-[-1.16px] md1920:text-[3.021vw] md1920:leading-[3.927vw] md1920:tracking-[-0.06vw] md720:mb-[1.16px] md720:text-[16px] md720:leading-[20.8px] md720:tracking-[-0.32px]">
+          Free
         </strong>
         <p className="mb-[64px] text-sayyo_subtext text-center font-Inter text-[34px] font-medium leading-[44.2px] md1920:mb-[3.333vw] md1920:text-[1.771vw] md1920:leading-[2.302vw] md720:mb-[17.9px] md720:text-[9.419px] md720:leading-[12.245px] md720:tracking-[-0.188px]">
-          Kết nối bạn với hàng xóm của bạn.
+          Connect with your neighbors
         </p>
         <div
           className="mb-[222px] flex m-auto my-0 pt-[52px] pl-[82px] w-[1180px] h-[488px] box-border rounded-[24px] border-[1px] border-sayyo_bg_more shadow-[0_20px_20px_rgba(0,0,0,0.10)] bg-sayyo_wht
         md1920:mb-[11.563vw] md1920:pt-[2.708vw] md1920:pl-[4.271vw] md1920:w-[61.458vw] md1920:h-[25.417vw] md1920:rounded-[1.25vw]
         
-        md720:mb-[88.83px] md720:pt-[14.43px] md720:pl-[16.4px] pr-[16px] md720:w-[328px] md720:h-[184px]
-        md720:rounded-[6.649px] "
+        md720:mb-[88.83px] md720:pt-[14.43px] md720:pl-[16.4px] pr-[16px] md720:w-[328px] md720:h-[184px] md720:rounded-[6.649px]"
         >
           <div className="flex flex-col items-center mr-[52px] md1920:mr-[2.708vw] md720:mr-[10px]">
             <Image
@@ -131,21 +130,20 @@ export default function Home() {
             <p
               className="
             mb-[13px] text-sayyo_l2 text-center font-Inter text-[28px] font-bold leading-[36.4px] tracking-[-0.56px]
-            md1920:mb-[0.677vw] md1920:text-[1.458vw] md1920:leading-[1.896vw]
+            md1920:mb-[0.677vw] md1920:text-[1.458vw] md1920:leading-[1.896vw] md1920:tracking-[-0.029vw]
             md720:mb-[10.94px] md720:text-[11px] md720:leading-[14.3px] md720:tracking-[-0.22px]"
             >
-              Giúp tôi một
-              <br />
-              việc nhé
+              Do me
+              <br />a favor
             </p>
             <div
               className="w-[271px] text-sayyo_subtext text-center font-Inter text-[20px] font-medium leading-[26px] tracking-[-0.4px]
-            md1920:w-[14.115vw] md1920_970:text-[1.042vw] md1920:leading-[1.354vw]
+            md1920:w-[14.115vw] md1920_970:text-[1.042vw] md1920:leading-[1.354vw] md1920:tracking-[-0.021vw]
             md970:text-[10px]
             md720:w-[86px] md720:text-[10px] md720:leading-[13px] md720:tracking-[-0.2px]"
             >
-              Hỏi hàng xóm của bạn về những điều bạn muốn tìm hiểu hoặc cần giúp
-              đỡ
+              Ask your neighbors about things you want to learn about or need
+              help with.
             </div>
           </div>
           <div
@@ -166,20 +164,20 @@ export default function Home() {
             <p
               className="
             mb-[13px] text-sayyo_l2 text-center font-Inter text-[28px] font-bold leading-[36.4px] tracking-[-0.56px]
-            md1920:mb-[0.677vw] md1920:text-[1.458vw] md1920:leading-[1.896vw]
+            md1920:mb-[0.677vw] md1920:text-[1.458vw] md1920:leading-[1.896vw] md1920:tracking-[-0.029vw]
             md720:mb-[10.94px] md720:text-[11px] md720:leading-[14.3px] md720:tracking-[-0.22px]"
             >
-              Làm điều đó cho
-              <br className="md720:hidden" />
-              hàng xóm
+              Do it
+              <br />
+              for neighbor
             </p>
             <div
               className="w-[271px] text-sayyo_subtext text-center font-Inter text-[20px] font-medium leading-[26px] tracking-[-0.4px] 
-            md1920:w-[14.115vw] md1920_970:text-[1.042vw] md1920:leading-[1.354vw] 
+            md1920:w-[14.115vw] md1920_970:text-[1.042vw] md1920:leading-[1.354vw] md1920:tracking-[-0.021vw]
             md970:text-[10px]
             md720:w-[83px] md720:text-[10px] md720:leading-[13px] md720:tracking-[-0.2px]"
             >
-              Giúp hàng xóm xung quanh bạn làm những gì họ cần và kiếm tiền
+              Help your neighbors around you do what they need and make money
             </div>
           </div>
           <div
@@ -195,20 +193,20 @@ export default function Home() {
             />
             <p
               className="mb-[13px] text-sayyo_l2 text-center font-Inter text-[28px] font-bold leading-[36.4px] tracking-[-0.56px]
-            md1920:mb-[0.677vw] md1920:text-[1.458vw] md1920:leading-[1.896vw]
+            md1920:mb-[0.677vw] md1920:text-[1.458vw] md1920:leading-[1.896vw] md1920:tracking-[-0.029vw]
             md720:mb-[10.94px] md720:text-[11px] md720:leading-[14.3px] md720:tracking-[-0.22px]"
             >
-              Hãy cho hàng
+              Let neighbors
               <br />
-              xóm biết bạn
+              know you
             </p>
             <div
               className="w-[271px] text-sayyo_subtext text-center font-Inter text-[20px] font-medium leading-[26px] tracking-[-0.4px]
-            md1920:w-[14.115vw] md1920_970:text-[1.042vw] md1920:leading-[1.354vw]
+            md1920:w-[14.115vw] md1920_970:text-[1.042vw] md1920:leading-[1.354vw] md1920:tracking-[-0.021vw]
             md970:text-[10px]
             md720:w-[75px] md720:text-[10px] md720:leading-[13px] md720:tracking-[-0.2px]"
             >
-              Hãy để hàng xóm biết về tài năng của bạn và kiếm tiền
+              Let your neighbors know about your talents and make money
             </div>
           </div>
         </div>
@@ -219,27 +217,23 @@ export default function Home() {
         md720:w-[328px] md720:gap-[7px] md720:mb-[19px]"
         >
           <p
-            className="shrink w-[387px] text-sayyo_l2 font-Sriracha text-[43px] leading-[47.3px] tracking-[-0.86px] 
-          md1920:w-[20.156vw] md1920:text-[2.24vw] md1920:leading-[2.464vw] 
-          md720:text-[16px] md720:w-[115px] md720:leading-[17.6px] md720:tracking-[-0.32px]"
+            className="shrink-0 w-[387px] text-sayyo_l2 font-Sriracha text-[43px] leading-[47.3px] tracking-[-0.86px] 
+          md1920:w-[20.156vw] md1920:text-[2.24vw] md1920:leading-[2.464vw] md1920:tracking-[-0.045vw]
+          md720:text-[16px] md720:w-[140px] md720:leading-[17.6px] md720:tracking-[-0.32px]"
           >
-            Tìm mọi thứ bạn
+            Find everything you
             <br />
-            cần và cần làm
+            need and need to do
           </p>
           <p
-            className="mt-[8px] w-[653px] text-sayyo_subtext font-Inter text-[20px] leading-[26px] tracking-[-0.4px] 
-          md1920:mt-[0.417vw] md1920:w-[34.01vw] md1920_1080:text-[1.042vw] md1920-1080:leading-[1.354vw] md1920_1080:tracking-[-0.021vw]
-          md1080:text-[11px] md1080:leading-[14.3px] 
-          md720:mt-[2.18px] md720:w-[190px] md720:text-[16px] md720:leading-[14.3px] md720:tracking-[-0.22px]"
+            className="mt-[8px] text-sayyo_subtext font-Inter text-[20px] leading-[26px] tracking-[-0.4px] 
+          md1920:mt-[0.417vw] md1920:w-[34.01vw]  md1920_1080:text-[1.042vw] md1920-1080:leading-[1.354vw] 
+          md1920_1080:tracking-[-0.021vw] 
+          md1080:text-[11px] md1080:leading-[14.3px]
+          md720:mt-[2.18px] md720:w-[182px] md720:text-[16px] md720:leading-[14.3px] md720:tracking-[-0.22px]"
           >
-            Sayyo, bạn có thể giao dịch các nhiệm vụ và nhu cầu một cách an toàn
-            và nhanh chóng trong nhiều lĩnh vực khác nhau với những người hàng
-            xóm đã được xác minh.
-            {/* Sayyo, you can safely and quickly transact tasks and needs in&nbsp;
-            <br className="hidden md805:block" />
-            various <br className="md805:hidden" /> fields with verified
-            neighbors. */}
+            Sayyo, you can safely and quickly transact tasks and needs in&nbsp;
+            various fields with verified neighbors.
           </p>
         </div>
 
@@ -252,7 +246,7 @@ export default function Home() {
         <div
           className="mx-auto mb-[170px] flex w-[1176px]
         md1920:mb-[8.854vw] md1920:w-[61.25vw]
-        md720:mb-[65.3px] md720:w-full"
+        md720:mb-[72.3px] md720:w-full"
         >
           <div className="flex flex-col items-center w-[196px] md1920:w-[10.208vw] md720:w-[54.298px]">
             <Image
@@ -264,9 +258,9 @@ export default function Home() {
               className="flex items-center h-[46px] font-Roboto text-[20px] font-bold 
             md1920:h-[2.396vw] md1920_970:text-[1.042vw]
             md970:text-[10px]
-            md720:text-[10px] md720:h-auto"
+            md720:text-[10px] md720:h-[30px]"
             >
-              Ngôn ngữ
+              Language
             </strong>
           </div>
           <div className="flex flex-col items-center w-[196px] md1920:w-[10.208vw] md720:w-[54.298px]">
@@ -279,9 +273,9 @@ export default function Home() {
               className="flex items-center h-[46px] font-Roboto text-[20px] font-bold
             md1920:h-[2.396vw] md1920_970:text-[1.042vw]
             md970:text-[10px]
-            md720:text-[10px] md720:h-auto"
+            md720:text-[10px] md720:h-[30px]"
             >
-              Thể thao
+              Sports
             </strong>
           </div>
           <div className="flex flex-col items-center w-[196px] md1920:w-[10.208vw] md720:w-[54.298px]">
@@ -294,9 +288,11 @@ export default function Home() {
               className="flex items-center h-[46px] text-center font-Roboto text-[20px] font-bold
              md1920:h-[2.396vw] md1920_970:text-[1.042vw]
              md970:text-[10px]
-            md720:text-[10px] md720:h-auto"
+            md720:text-[10px] md720:h-[30px]"
             >
-              Nhạc cụ
+              Musical
+              <br />
+              instrument
             </strong>
           </div>
           <div className="flex flex-col items-center w-[196px] md1920:w-[10.208vw] md720:w-[54.298px]">
@@ -309,9 +305,9 @@ export default function Home() {
               className="flex items-center h-[46px] font-Roboto text-[20px] font-bold
             md1920:h-[2.396vw] md1920_970:text-[1.042vw]
             md970:text-[10px]
-            md720:text-[10px] md720:h-auto"
+            md720:text-[10px] md720:h-[30px]"
             >
-              Trợ giúp
+              Help
             </strong>
           </div>
           <div className="flex flex-col items-center w-[196px] md1920:w-[10.208vw] md720:w-[54.298px]">
@@ -324,9 +320,9 @@ export default function Home() {
               className="flex items-center h-[46px] font-Roboto text-[20px] font-bold
             md1920:h-[2.396vw] md1920_970:text-[1.042vw]
             md970:text-[10px]
-            md720:text-[10px] md720:h-auto"
+            md720:text-[10px] md720:h-[30px]"
             >
-              Bán
+              Sale
             </strong>
           </div>
           <div className="flex flex-col items-center w-[196px] md1920:w-[10.208vw] md720:w-[54.298px]">
@@ -339,9 +335,9 @@ export default function Home() {
               className="flex items-center h-[46px] font-Roboto text-[20px] font-bold
             md1920:h-[2.396vw] md1920_970:text-[1.042vw]
             md970:text-[10px]
-            md720:text-[10px] md720:h-auto"
+            md720:text-[10px] md720:h-[30px]"
             >
-              Tuyển dụng
+              Recruit
             </strong>
           </div>
         </div>
@@ -359,10 +355,10 @@ export default function Home() {
             />
             <strong
               className="text-sayyo_wht font-Sriracha text-[27.536px] leading-[33.044px] tracking-[-0.55px] 
-            md1920:text-[1.434vw] md1920:leading-[1.721vw]
+            md1920:text-[1.434vw] md1920:leading-[1.721vw] md1920:tracking-[-0.029vw]
             md720:text-[11px]  md720:leading-[13.2px] md720:tracking-[-0.22px]"
             >
-              Kết nối các người giải quyết vấn đề địa phương!
+              Connect local problem solvers!
             </strong>
           </div>
         </div>
@@ -373,7 +369,7 @@ export default function Home() {
         >
           <div>
             <Image
-              src={img_post_vn}
+              src={img_post}
               alt="img_post"
               width={266}
               height={506}
@@ -381,31 +377,31 @@ export default function Home() {
             />
             <strong
               className="mx-auto flex w-[150px] items-center justify-center text-sayyo_primary font-Sriracha text-[40px] font-normal leading-[44px] tracking-[-0.8px]
-            md1920:w-[7.813vw] md1920:text-[2.083vw] md1920:leading-[2.292vw] 
+            md1920:w-[7.813vw] md1920:text-[2.083vw] md1920:leading-[2.292vw] md1920:tracking-[-0.042vw]
             md720:text-[12px] md720:leading-[13.2px] md720:tracking-[-0.24px] md720:w-auto"
             >
-              Đăng bài
+              Post
             </strong>
           </div>
           <div>
             <Image
-              src={img_discover_vn}
+              src={img_discover}
               alt="img_discover"
               width={266}
               height={506}
               className="mb-[34.25px] md1920:mb-[1.784vw] md1920:w-[13.854vw] md720:mb-[9.01px] md720:w-[75px]"
             />
             <strong
-              className="mx-auto flex items-center justify-center text-sayyo_primary font-Sriracha text-[40px] font-normal leading-[44px] tracking-[-0.8px]
-                         md1920:text-[2.083vw] md1920:leading-[2.292vw] 
+              className="mx-auto flex w-[150px] items-center justify-center text-sayyo_primary font-Sriracha text-[40px] font-normal leading-[44px] tracking-[-0.8px]
+                        md1920:w-[7.813vw] md1920:text-[2.083vw] md1920:leading-[2.292vw] md1920:tracking-[-0.042vw]
             md720:text-[12px] md720:leading-[13.2px] md720:tracking-[-0.24px]  md720:w-auto"
             >
-              Khám phá
+              Discover
             </strong>
           </div>
           <div>
             <Image
-              src={img_chat_vn}
+              src={img_chat}
               alt="img_chat"
               width={266}
               height={506}
@@ -413,7 +409,7 @@ export default function Home() {
             />
             <strong
               className="mx-auto flex w-[150px] items-center justify-center text-sayyo_primary font-Sriracha text-[40px] font-normal leading-[44px] tracking-[-0.8px]
-                        md1920:w-[7.813vw] md1920:text-[2.083vw] md1920:leading-[2.292vw] 
+                        md1920:w-[7.813vw] md1920:text-[2.083vw] md1920:leading-[2.292vw] md1920:tracking-[-0.042vw]
             md720:text-[12px] md720:leading-[13.2px] md720:tracking-[-0.24px]  md720:w-auto"
             >
               Chat
@@ -421,7 +417,7 @@ export default function Home() {
           </div>
           <div>
             <Image
-              src={img_profile_vn}
+              src={img_profile}
               alt="img_profile"
               width={266}
               height={506}
@@ -429,16 +425,16 @@ export default function Home() {
             />
             <strong
               className="mx-auto flex w-[150px] items-center justify-center text-sayyo_primary font-Sriracha text-[40px] font-normal leading-[44px] tracking-[-0.8px]
-                        md1920:w-[7.813vw] md1920:text-[2.083vw] md1920:leading-[2.292vw] 
+                        md1920:w-[7.813vw] md1920:text-[2.083vw] md1920:leading-[2.292vw] md1920:tracking-[-0.042vw]
             md720:text-[12px] md720:leading-[13.2px] md720:tracking-[-0.24px]  md720:w-auto"
             >
-              Tài năng
+              Profile
             </strong>
           </div>
         </div>
       </div>
       {/** footer */}
-      <Footer />
+      <Footer.En />
     </div>
   );
 }
