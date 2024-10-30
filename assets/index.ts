@@ -1,3 +1,9 @@
+export { default as btn_instagram } from "./btn_instagram.svg";
+export { default as btn_instagram_color } from "./btn_instagram_color.png";
+export { default as btn_mail } from "./btn_mail.svg";
+export { default as logo_mobileto } from "./logo_mobileto.png";
+export { default as logo_mobileto_black } from "./logo_mobileto_black.png";
+export { default as logo_teambro } from "./logo_teambro.svg";
 export { default as logo_sayyo_small } from "./logo_sayyo_small.svg";
 export { default as img_back } from "./img_back.png";
 export { default as img_back2 } from "./img_back2.png";
@@ -28,6 +34,7 @@ export { default as img_profile_vn } from "./img_profile_vn.png";
 export { default as img_discover_vn } from "./img_discover_vn.png";
 export { default as img_chat_vn } from "./img_chat_vn.png";
 export { default as img_post_vn } from "./img_post_vn.png";
-export { default as btn_instagram } from "./btn_instagram.png";
-export { default as logo_mobileto } from "./logo_mobileto.png";
+
 export { default as img_back_middle } from "./img_back_middle.png";
+export { default as img_qr_and } from "./img_qr_and.png";
+export { default as img_qr_ios } from "./img_qr_ios.png";
