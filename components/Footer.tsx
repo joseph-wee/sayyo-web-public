@@ -3,7 +3,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { btn_instagram, logo_mobileto } from "../assets";
+import { btn_instagram_color, logo_mobileto_black } from "../assets";
 
 const Footer = () => {
   return (
@@ -18,7 +18,7 @@ const Footer = () => {
       md720:mb-[6px]"
       >
         <Link
-          href="/privacy_policy"
+          href="/pp"
           className="text-sayyo_subtext font-Roboto text-[16px] leading-[20.8px]
           md1920_1450:text-[0.833vw] md1920:leading-[1.083vw]
           md1450:text-[12px]
@@ -28,7 +28,7 @@ const Footer = () => {
         </Link>
         <div className="w-[1px] h-[13px] bg-[rgba(0,0,0,0.1)]" />
         <Link
-          href="/terms_of_conditions"
+          href="/toc"
           className="text-sayyo_subtext font-Roboto text-[16px] leading-[20.8px]
           md1920_1450:text-[0.833vw] md1920:leading-[1.083vw]
           md1450:text-[12px]
@@ -42,7 +42,7 @@ const Footer = () => {
           onClick={() => window.open("https://www.instagram.com/sayyo.viet")}
         >
           <Image
-            src={btn_instagram}
+            src={btn_instagram_color}
             alt="btn_instagram"
             className="mr-[12px] md720:mr-0"
           />
@@ -56,7 +56,7 @@ const Footer = () => {
         </button>
       </div>
       <Link
-        href="/en/account_withdraw_guide"
+        href="/del_guide"
         className="block mb-[9px] text-sayyo_subtext text-center font-Roboto text-[16px] leading-[20.8px] 
       md1920_1450:text-[0.833vw] md1920_1450:leading-[1.083vw]
       md1450:text-[12px]
@@ -73,7 +73,7 @@ const Footer = () => {
         2024 Sayyo Bảo lưu mọi quyền.
       </span>
       <Image
-        src={logo_mobileto}
+        src={logo_mobileto_black}
         alt="logo_mobileto"
         className="mx-auto md1920:w-[11.042vw] min-w-[96.2px] md720:w-[96.2px] cursor-pointer"
         onClick={() => window.open("https://www.mobileto.io")}
@@ -95,7 +95,7 @@ const FooterEn = () => {
       md720:mb-[6px]"
       >
         <Link
-          href="/en/privacy_policy"
+          href="/en/pp"
           className="text-sayyo_subtext font-Roboto text-[16px] leading-[20.8px]
           md1920_1450:text-[0.833vw] md1920:leading-[1.083vw]
           md1450:text-[12px]
@@ -105,7 +105,7 @@ const FooterEn = () => {
         </Link>
         <div className="w-[1px] h-[13px] bg-[rgba(0,0,0,0.1)]" />
         <Link
-          href="/en/terms_of_conditions"
+          href="/en/toc"
           className="text-sayyo_subtext font-Roboto text-[16px] leading-[20.8px]
           md1920_1450:text-[0.833vw] md1920:leading-[1.083vw]
           md1450:text-[12px]
@@ -119,7 +119,7 @@ const FooterEn = () => {
           onClick={() => window.open("https://www.instagram.com/sayyo.viet")}
         >
           <Image
-            src={btn_instagram}
+            src={btn_instagram_color}
             alt="btn_instagram"
             className="mr-[12px] md720:mr-0"
           />
@@ -135,7 +135,7 @@ const FooterEn = () => {
         </button>
       </div>
       <Link
-        href="/en/account_withdraw_guide"
+        href="/en/del_guide"
         className="block mb-[9px] text-sayyo_subtext text-center font-Roboto text-[16px] leading-[20.8px] 
       md1920_1450:text-[0.833vw] md1920_1450:leading-[1.083vw]
       md1450:text-[12px]
@@ -153,7 +153,7 @@ const FooterEn = () => {
         2024 Sayyo All Rights Reserved.
       </span>
       <Image
-        src={logo_mobileto}
+        src={logo_mobileto_black}
         alt="logo_mobileto"
         className="mx-auto md1920:w-[11.042vw] min-w-[96.2px] md720:w-[96.2px] cursor-pointer"
         onClick={() => window.open("https://www.mobileto.io")}

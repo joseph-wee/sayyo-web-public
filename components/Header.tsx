@@ -11,7 +11,7 @@ const Header = () => {
   return (
     <header className="absolute z-20 w-[100%]">
       <div className="m-auto my-0 pl-[24px] pr-[20px] flex items-center justify-between max-w-[1280px] h-[78px] md720:h-[57px] ">
-        <Link href="/">
+        <Link href="">
           <Image
             src={logo_sayyo_small}
             alt="logo_sayyo_small"
@@ -38,6 +38,7 @@ const Header = () => {
 /** bg color sayyo_primary Header */
 const HeaderGreen = () => {
   const router = useRouter();
+  const path = `/en/` + router.pathname;
 
   return (
     <header className="absolute z-20 w-[100%] bg-sayyo_primary ">
@@ -54,7 +55,7 @@ const HeaderGreen = () => {
             Vietnamese
           </button>
           <div className="w-[1px] h-[13px] border-l-[1px] border-l-[#FFFFFF]/[.4] md720:h-[8.27px]" />
-          <Link href={`/en${router.pathname}`}>
+          <Link href={path}>
             <button className="font-Roboto font-normal text-sayyo_wht md720:text-[12px] md720:leading-[15.6px]">
               English
             </button>
@@ -113,7 +114,7 @@ const HeaderGreenEn = () => {
           />
         </Link>
         <div className="flex items-center gap-[17px]">
-          <Link href={path}>
+          <Link href={`${path}`}>
             <button className="font-Roboto font-normal text-sayyo_wht md720:text-[12px] md720:leading-[15.6px]">
               Vietnamese
             </button>
