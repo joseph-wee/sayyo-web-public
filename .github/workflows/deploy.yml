@@ -53,8 +53,8 @@ jobs:
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          application_name: sayyo-web
-          environment_name: Sayyo-web-env
+          application_name: mobileto-sayyo-web
+          environment_name: Mobileto-sayyo-web-env
           version_label: "${{ steps.timestamp.outputs.date }}"
           region: us-east-1
           deployment_package: deploy.zip
