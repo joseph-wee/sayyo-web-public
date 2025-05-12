@@ -24,16 +24,16 @@ jobs:
 
     steps:
       - name: Checkout source code.
-        uses: actions/checkout@v3.3.0
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3.6.0
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: "npm"
+          cache: "yarn"
 
       - name: Install dependencies
-        run: yarn install
+        run: yarn install --frozen-lockfile
 
       - name: Run build
         run: yarn build
@@ -42,13 +42,10 @@ jobs:
 
       - name: Current timestamp
         id: timestamp
-        run: echo "::set-output name=date::$(date +'%Y-%m-%dT%H-%M-%S-%3NZ')"
-
-      - name: remove node_modules
-        run: rm -rf node_modules
+        run: echo "date=$(date +'%Y-%m-%dT%H-%M-%S-%3NZ')" >> $GITHUB_OUTPUT
 
       - name: Generate deployment package # (1)
-        run: zip ./deploy.zip -r * .[^.]*
+        run: zip ./deploy.zip -r * .[^.]* node_modules
 
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v22
