@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Image from "next/image";
 
 import {
@@ -15,11 +16,14 @@ import {
   img_chat_vn,
   img_discover_vn,
   img_man,
+  img_offer_vn,
   img_place,
   img_post_vn,
   img_profile_vn,
   img_qr_and,
   img_qr_ios,
+  img_request_vn,
+  img_sell_vn,
   img_woman,
   logo_sayyo,
   logo_sayyo_medium,
@@ -31,6 +35,61 @@ import { Background, Footer, Header } from "../components";
 export default function Home() {
   return (
     <>
+      <Head>
+        <title>Sayyo</title>
+        <meta name="description" content="sayyo web" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+          property="og:image"
+          content="https://mobileto-files.s3.amazonaws.com/og_image_sayyo.png"
+        />
+        {/* <meta
+      property="og:image"
+      content="https://d1vnx0h70erqwv.cloudfront.net/_next/static/media/logo_mobileto.97fc625a.png"
+    /> */}
+        <meta property="og:title" content="Sayyo" />
+
+        {/* //카카오톡에 링크를 전송하면 보이는 내용을 text로 설정 */}
+        <meta
+          property="og:description"
+          content="Kết nối các người giải quyết vấn đề địa phương!"
+        />
+        <link rel="icon" href="/favicon.ico" />
+
+        {/** 1. 즐겨찾기 아이콘?  2.아이패드 아이콘?*/}
+        {/* <link rel="shortcut icon" href="http://test.repunch.io/favicon.ico" />
+
+    <link
+      rel="apple-touch-startup-image"
+      href="http://test.repunch.io/favicon.ico"
+    /> */}
+
+        {/** 안드로이드 현재 폰에서는 되는중 탭안되면 고해상도 아이콘 소스코드 추가하면 될 듯? */}
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon-16x16.png"
+        />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" />
+
+        {/** 테마랑 타이틀 관련 컬러인 듯? 나중에 필요하면 참고해서 적용 */}
+        {/* <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ae4dvc" /> */}
+      </Head>
+
       <div className="relative pb-[264px] md720:pb-[173px] tall:pb-0">
         <Header />
         <Background />
@@ -120,7 +179,7 @@ export default function Home() {
           <div
             className="mb-[222px] flex m-auto my-0 pt-[52px] pl-[82px] w-[1180px] h-[488px] box-border rounded-[24px] border-[1px] border-sayyo_bg_more shadow-[0_20px_20px_rgba(0,0,0,0.10)] bg-sayyo_wht
         md1920:mb-[11.563vw] md1920:pt-[2.708vw] md1920:pl-[4.271vw] md1920:w-[61.458vw] md1920:h-[25.417vw] md1920:rounded-[1.25vw]
-        
+
         md720:mb-[88.83px] md720:pt-[14.43px] md720:pl-[16.4px] pr-[16px] md720:w-[328px] md720:h-[184px]
         md720:rounded-[6.649px] "
           >
@@ -176,8 +235,8 @@ export default function Home() {
                 hàng xóm
               </p>
               <div
-                className="w-[271px] text-sayyo_subtext text-center font-Inter text-[20px] font-medium leading-[26px] tracking-[-0.4px] 
-            md1920:w-[14.115vw] md1920_970:text-[1.042vw] md1920:leading-[1.354vw] 
+                className="w-[271px] text-sayyo_subtext text-center font-Inter text-[20px] font-medium leading-[26px] tracking-[-0.4px]
+            md1920:w-[14.115vw] md1920_970:text-[1.042vw] md1920:leading-[1.354vw]
             md970:text-[10px]
             md720:w-[83px] md720:text-[10px] md720:leading-[13px] md720:tracking-[-0.2px]"
               >
@@ -200,29 +259,30 @@ export default function Home() {
             md1920:mb-[0.677vw] md1920:text-[1.458vw] md1920:leading-[1.896vw]
             md720:mb-[10.94px] md720:text-[11px] md720:leading-[14.3px] md720:tracking-[-0.22px]"
               >
-                Hãy cho hàng
+                Bán các mặt
                 <br />
-                xóm biết bạn
+                hàng của bạn
               </p>
               <div
-                className="w-[271px] text-sayyo_subtext text-center font-Inter text-[20px] font-medium leading-[26px] tracking-[-0.4px]
-            md1920:w-[14.115vw] md1920_970:text-[1.042vw] md1920:leading-[1.354vw]
+                className="w-[320px] text-sayyo_subtext text-center font-Inter text-[20px] font-medium leading-[26px] tracking-[-0.4px]
+            md1920:w-[15.915vw] md1920_970:text-[1.042vw] md1920:leading-[1.354vw]
             md970:text-[10px]
             md720:w-[75px] md720:text-[10px] md720:leading-[13px] md720:tracking-[-0.2px]"
               >
-                Hãy để hàng xóm biết về tài năng của bạn và kiếm tiền
+                Bán những vật phẩm bạn có thể bán cho những người xung quanh và
+                mua những vật phẩm bạn cần.
               </div>
             </div>
           </div>
           {/** find everything */}
           <div
-            className="mx-auto mb-[84px] w-[1160px] flex gap-[52px] 
+            className="mx-auto mb-[84px] w-[1160px] flex gap-[52px]
         md1920:mb-[4.375vw] md1920:w-[60.417vw] md1920:gap-[2.708vw]
         md720:w-[328px] md720:gap-[7px] md720:mb-[19px]"
           >
             <p
-              className="shrink w-[387px] text-sayyo_l2 font-Sriracha text-[43px] leading-[47.3px] tracking-[-0.86px] 
-          md1920:w-[20.156vw] md1920:text-[2.24vw] md1920:leading-[2.464vw] 
+              className="shrink w-[387px] text-sayyo_l2 font-Sriracha text-[43px] leading-[47.3px] tracking-[-0.86px]
+          md1920:w-[20.156vw] md1920:text-[2.24vw] md1920:leading-[2.464vw]
           md720:text-[16px] md720:w-[115px] md720:leading-[17.6px] md720:tracking-[-0.32px]"
             >
               Tìm mọi thứ bạn
@@ -230,9 +290,9 @@ export default function Home() {
               cần và cần làm
             </p>
             <p
-              className="mt-[8px] w-[653px] text-sayyo_subtext font-Inter text-[20px] leading-[26px] tracking-[-0.4px] 
+              className="mt-[8px] w-[653px] text-sayyo_subtext font-Inter text-[20px] leading-[26px] tracking-[-0.4px]
           md1920:mt-[0.417vw] md1920:w-[34.01vw] md1920_1080:text-[1.042vw] md1920-1080:leading-[1.354vw] md1920_1080:tracking-[-0.021vw]
-          md1080:text-[11px] md1080:leading-[14.3px] 
+          md1080:text-[11px] md1080:leading-[14.3px]
           md720:mt-[2.18px] md720:w-[190px] md720:text-[16px] md720:leading-[14.3px] md720:tracking-[-0.22px]"
             >
               Sayyo, bạn có thể giao dịch các nhiệm vụ và nhu cầu một cách an
@@ -263,7 +323,7 @@ export default function Home() {
                 className="mb-[8px] md1920:mb-[0.417vw] md1920:w-[4.896vw] md720:mb-[2.22px] md720:w-[26.041px]"
               />
               <strong
-                className="flex items-center h-[46px] font-Roboto text-[20px] font-bold 
+                className="flex items-center h-[46px] font-Roboto text-[20px] font-bold
             md1920:h-[2.396vw] md1920_970:text-[1.042vw]
             md970:text-[10px]
             md720:text-[10px] md720:h-auto"
@@ -360,7 +420,7 @@ export default function Home() {
                 className="mr-[36px] md1920:mr-[1.875vw] md1920:w-[11.719vw] md720:w-[61.501px] md720:mr-[16.78px]"
               />
               <strong
-                className="text-sayyo_wht font-Sriracha text-[27.536px] leading-[33.044px] tracking-[-0.55px] 
+                className="text-sayyo_wht font-Sriracha text-[27.536px] leading-[33.044px] tracking-[-0.55px]
             md1920:text-[1.434vw] md1920:leading-[1.721vw]
             md720:text-[11px]  md720:leading-[13.2px] md720:tracking-[-0.22px]"
               >
@@ -375,23 +435,23 @@ export default function Home() {
           >
             <div>
               <Image
-                src={img_post_vn}
+                src={img_offer_vn}
                 alt="img_post"
                 width={266}
                 height={506}
                 className="mb-[34.25px] md1920:mb-[1.784vw] md1920:w-[13.854vw] md720:mb-[9.01px] md720:w-[75px]"
               />
               <strong
-                className="mx-auto flex w-[150px] items-center justify-center text-sayyo_primary font-Sriracha text-[40px] font-normal leading-[44px] tracking-[-0.8px]
-            md1920:w-[7.813vw] md1920:text-[2.083vw] md1920:leading-[2.292vw] 
+                className="mx-auto flex w-[250px] items-center justify-center text-sayyo_primary font-Sriracha text-[40px] font-normal leading-[44px] tracking-[-0.8px]
+            md1920:w-[12.813vw] md1920:text-[2.083vw] md1920:leading-[2.292vw]
             md720:text-[12px] md720:leading-[13.2px] md720:tracking-[-0.24px] md720:w-auto"
               >
-                Đăng bài
+                Tôi làm được
               </strong>
             </div>
             <div>
               <Image
-                src={img_discover_vn}
+                src={img_sell_vn}
                 alt="img_discover"
                 width={266}
                 height={506}
@@ -399,15 +459,15 @@ export default function Home() {
               />
               <strong
                 className="mx-auto flex items-center justify-center text-sayyo_primary font-Sriracha text-[40px] font-normal leading-[44px] tracking-[-0.8px]
-                         md1920:text-[2.083vw] md1920:leading-[2.292vw] 
+                         md1920:text-[2.083vw] md1920:leading-[2.292vw]
             md720:text-[12px] md720:leading-[13.2px] md720:tracking-[-0.24px]  md720:w-auto"
               >
-                Khám phá
+                Bán hàng
               </strong>
             </div>
             <div>
               <Image
-                src={img_chat_vn}
+                src={img_request_vn}
                 alt="img_chat"
                 width={266}
                 height={506}
@@ -415,15 +475,15 @@ export default function Home() {
               />
               <strong
                 className="mx-auto flex w-[150px] items-center justify-center text-sayyo_primary font-Sriracha text-[40px] font-normal leading-[44px] tracking-[-0.8px]
-                        md1920:w-[7.813vw] md1920:text-[2.083vw] md1920:leading-[2.292vw] 
+                        md1920:w-[7.813vw] md1920:text-[2.083vw] md1920:leading-[2.292vw]
             md720:text-[12px] md720:leading-[13.2px] md720:tracking-[-0.24px]  md720:w-auto"
               >
-                Chat
+                Yêu cầu
               </strong>
             </div>
             <div>
               <Image
-                src={img_profile_vn}
+                src={img_chat_vn}
                 alt="img_profile"
                 width={266}
                 height={506}
@@ -431,10 +491,10 @@ export default function Home() {
               />
               <strong
                 className="mx-auto flex w-[150px] items-center justify-center text-sayyo_primary font-Sriracha text-[40px] font-normal leading-[44px] tracking-[-0.8px]
-                        md1920:w-[7.813vw] md1920:text-[2.083vw] md1920:leading-[2.292vw] 
+                        md1920:w-[7.813vw] md1920:text-[2.083vw] md1920:leading-[2.292vw]
             md720:text-[12px] md720:leading-[13.2px] md720:tracking-[-0.24px]  md720:w-auto"
               >
-                Tài năng
+                Chat
               </strong>
             </div>
           </div>
