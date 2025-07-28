@@ -1,4 +1,4 @@
-import type { Config } from 'tailwindcss';
+import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
@@ -11,6 +11,8 @@ const config: Config = {
       Sriracha: ["Sriracha"],
       Inter: ["Inter"],
       Roboto: ["Roboto"],
+      NanumSquare: ["NanumSquare"],
+      NanumSquareRound: ["NanumSquareRound"],
     },
     colors: {
       sayyo_primary: "#00A939",
