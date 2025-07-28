@@ -1,12 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
+import { apiPostPrivacyPolicy, apiPostTermsOfCondition } from "../api/api";
 import { Footer, Header } from "../components";
 
-const pp = () => {
+const usePp = () => {
+  const [content, setContent] = useState<string>("");
+
+  // apiPostPrivacyPolicy().then((res) => {
+  //   console.log(res);
+  // });
+
+  // 현재 Unauthorized로 인증이 안되어있어서 401 에러가 뜸
+
+  // useEffect(() => {
+  //   apiPostPrivacyPolicy().then((res) => {
+  //     console.log(res);
+  //   });
+  //   apiPostTermsOfCondition().then((res) => {
+  //     console.log(res);
+  //   });
+  // }, []);
+
   return (
     <>
       <div className="relative pb-[264px] md720:pb-[173px] tall:pb-0">
-        <Header.Green />
+        <Header />
 
         {/** content */}
         <div className="mx-auto pl-[18px] pr-[18px] pt-[113px] pb-[40px] max-w-[1030px] box-content">
@@ -153,4 +171,4 @@ const pp = () => {
   );
 };
 
-export default pp;
+export default usePp;
