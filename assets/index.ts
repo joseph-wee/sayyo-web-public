@@ -32,9 +32,31 @@ export { default as img_chat } from "./img_chat.png";
 export { default as img_post } from "./img_post.png";
 export { default as img_profile_vn } from "./img_profile_vn.png";
 export { default as img_discover_vn } from "./img_discover_vn.png";
-export { default as img_chat_vn } from "./img_chat_vn.png";
 export { default as img_post_vn } from "./img_post_vn.png";
 
 export { default as img_back_middle } from "./img_back_middle.png";
 export { default as img_qr_and } from "./img_qr_and.png";
 export { default as img_qr_ios } from "./img_qr_ios.png";
+
+export { default as ic_pay } from "./ic_pay.svg";
+export { default as ic_pay_offer } from "./ic_pay_offer.svg";
+export { default as ic_pay_request } from "./ic_pay_request.svg";
+export { default as ic_document } from "./ic_document.svg";
+export { default as ic_pin } from "./ic_pin.svg";
+export { default as ic_share_dark } from "./ic_share_dark.svg";
+export { default as logo_sayyo_white } from "./logo_sayyo_white.png";
+
+export { default as img_offer_vn } from "./img_offer_vn.png";
+export { default as img_sell_vn } from "./img_sell_vn.png";
+export { default as img_request_vn } from "./img_request_vn.png";
+export { default as img_chat_vn } from "./img_chat_vn.png";
+
+export { default as img_offer_en } from "./img_offer_en.png";
+export { default as img_sell_en } from "./img_sell_en.png";
+export { default as img_request_en } from "./img_request_en.png";
+export { default as img_chat_en } from "./img_chat_en.png";
+
+export { default as img_offer_ko } from "./img_offer_ko.png";
+export { default as img_sell_ko } from "./img_sell_ko.png";
+export { default as img_request_ko } from "./img_request_ko.png";
+export { default as img_chat_ko } from "./img_chat_ko.png";
