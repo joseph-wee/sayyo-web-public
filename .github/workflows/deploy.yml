@@ -47,13 +47,22 @@ jobs:
       - name: Generate deployment package # (1)
         run: zip ./deploy.zip -r * .[^.]* node_modules
 
+      # --- zip 파일 확인을 위함 ---
+      - name: Upload deployment package artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: deploy-package-${{ steps.timestamp.outputs.date }}
+          path: ./deploy.zip
+          retention-days: 5
+
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v22
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          application_name: mobileto-sayyo-web
-          environment_name: Mobileto-sayyo-web-env
+          application_name: mobileto-web
+          environment_name: Mobileto-web-env-1
           version_label: "${{ steps.timestamp.outputs.date }}"
           region: us-east-1
           deployment_package: deploy.zip
+          wait_for_environment_recovery: 300
