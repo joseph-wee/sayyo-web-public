@@ -12,7 +12,6 @@ import {
   ic_pay_request,
   ic_pin,
   ic_share_dark,
-  ic_test,
   logo_sayyo_white,
 } from "../../../assets";
 import test from "../../test";
