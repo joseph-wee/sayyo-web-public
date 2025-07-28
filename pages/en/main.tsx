@@ -13,13 +13,17 @@ import {
   icon_sale,
   icon_sports,
   img_chat,
+  img_chat_en,
   img_discover,
   img_man,
+  img_offer_en,
   img_place,
   img_post,
   img_profile,
   img_qr_and,
   img_qr_ios,
+  img_request_en,
+  img_sell_en,
   img_woman,
   logo_sayyo,
   logo_sayyo_medium,
@@ -32,7 +36,7 @@ export default function Home() {
   return (
     <>
       <div className="relative pb-[264px] md720:pb-[173px] tall:pb-0">
-        <Header.En />
+        <Header />
         <Background />
         {/** content */}
         <div className="relative z-10 mx-auto top-0 pt-[200px] max-w-[1280px] md1920:pt-[10.42vw] md720:max-w-[328px] md720:pt-[74px]">
@@ -120,7 +124,7 @@ export default function Home() {
           <div
             className="mb-[222px] flex m-auto my-0 pt-[52px] pl-[82px] w-[1180px] h-[488px] box-border rounded-[24px] border-[1px] border-sayyo_bg_more shadow-[0_20px_20px_rgba(0,0,0,0.10)] bg-sayyo_wht
         md1920:mb-[11.563vw] md1920:pt-[2.708vw] md1920:pl-[4.271vw] md1920:w-[61.458vw] md1920:h-[25.417vw] md1920:rounded-[1.25vw]
-        
+
         md720:mb-[88.83px] md720:pt-[14.43px] md720:pl-[16.4px] pr-[16px] md720:w-[328px] md720:h-[184px] md720:rounded-[6.649px]"
           >
             <div className="flex flex-col items-center mr-[52px] md1920:mr-[2.708vw] md720:mr-[10px]">
@@ -174,7 +178,7 @@ export default function Home() {
                 for neighbor
               </p>
               <div
-                className="w-[271px] text-sayyo_subtext text-center font-Inter text-[20px] font-medium leading-[26px] tracking-[-0.4px] 
+                className="w-[271px] text-sayyo_subtext text-center font-Inter text-[20px] font-medium leading-[26px] tracking-[-0.4px]
             md1920:w-[14.115vw] md1920_970:text-[1.042vw] md1920:leading-[1.354vw] md1920:tracking-[-0.021vw]
             md970:text-[10px]
             md720:w-[83px] md720:text-[10px] md720:leading-[13px] md720:tracking-[-0.2px]"
@@ -198,9 +202,9 @@ export default function Home() {
             md1920:mb-[0.677vw] md1920:text-[1.458vw] md1920:leading-[1.896vw] md1920:tracking-[-0.029vw]
             md720:mb-[10.94px] md720:text-[11px] md720:leading-[14.3px] md720:tracking-[-0.22px]"
               >
-                Let neighbors
+                Sell your
                 <br />
-                know you
+                items
               </p>
               <div
                 className="w-[271px] text-sayyo_subtext text-center font-Inter text-[20px] font-medium leading-[26px] tracking-[-0.4px]
@@ -208,18 +212,19 @@ export default function Home() {
             md970:text-[10px]
             md720:w-[75px] md720:text-[10px] md720:leading-[13px] md720:tracking-[-0.2px]"
               >
-                Let your neighbors know about your talents and make money
+                Sell ​​the items you can sell to those around you and buy the
+                items you need.
               </div>
             </div>
           </div>
           {/** find everything */}
           <div
-            className="mx-auto mb-[84px] w-[1160px] flex gap-[52px] 
+            className="mx-auto mb-[84px] w-[1160px] flex gap-[52px]
         md1920:mb-[4.375vw] md1920:w-[60.417vw] md1920:gap-[2.708vw]
         md720:w-[328px] md720:gap-[7px] md720:mb-[19px]"
           >
             <p
-              className="shrink-0 w-[387px] text-sayyo_l2 font-Sriracha text-[43px] leading-[47.3px] tracking-[-0.86px] 
+              className="shrink-0 w-[387px] text-sayyo_l2 font-Sriracha text-[43px] leading-[47.3px] tracking-[-0.86px]
           md1920:w-[20.156vw] md1920:text-[2.24vw] md1920:leading-[2.464vw] md1920:tracking-[-0.045vw]
           md720:text-[16px] md720:w-[140px] md720:leading-[17.6px] md720:tracking-[-0.32px]"
             >
@@ -228,9 +233,9 @@ export default function Home() {
               need and need to do
             </p>
             <p
-              className="mt-[8px] text-sayyo_subtext font-Inter text-[20px] leading-[26px] tracking-[-0.4px] 
-          md1920:mt-[0.417vw] md1920:w-[34.01vw]  md1920_1080:text-[1.042vw] md1920-1080:leading-[1.354vw] 
-          md1920_1080:tracking-[-0.021vw] 
+              className="mt-[8px] text-sayyo_subtext font-Inter text-[20px] leading-[26px] tracking-[-0.4px]
+          md1920:mt-[0.417vw] md1920:w-[34.01vw]  md1920_1080:text-[1.042vw] md1920-1080:leading-[1.354vw]
+          md1920_1080:tracking-[-0.021vw]
           md1080:text-[11px] md1080:leading-[14.3px]
           md720:mt-[2.18px] md720:w-[182px] md720:text-[16px] md720:leading-[14.3px] md720:tracking-[-0.22px]"
             >
@@ -257,7 +262,7 @@ export default function Home() {
                 className="mb-[8px] md1920:mb-[0.417vw] md1920:w-[4.896vw] md720:mb-[2.22px] md720:w-[26.041px]"
               />
               <strong
-                className="flex items-center h-[46px] font-Roboto text-[20px] font-bold 
+                className="flex items-center h-[46px] font-Roboto text-[20px] font-bold
             md1920:h-[2.396vw] md1920_970:text-[1.042vw]
             md970:text-[10px]
             md720:text-[10px] md720:h-[30px]"
@@ -356,7 +361,7 @@ export default function Home() {
                 className="mr-[36px] md1920:mr-[1.875vw] md1920:w-[11.719vw] md720:w-[61.501px] md720:mr-[16.78px]"
               />
               <strong
-                className="text-sayyo_wht font-Sriracha text-[27.536px] leading-[33.044px] tracking-[-0.55px] 
+                className="text-sayyo_wht font-Sriracha text-[27.536px] leading-[33.044px] tracking-[-0.55px]
             md1920:text-[1.434vw] md1920:leading-[1.721vw] md1920:tracking-[-0.029vw]
             md720:text-[11px]  md720:leading-[13.2px] md720:tracking-[-0.22px]"
               >
@@ -371,7 +376,7 @@ export default function Home() {
           >
             <div>
               <Image
-                src={img_post}
+                src={img_offer_en}
                 alt="img_post"
                 width={266}
                 height={506}
@@ -382,12 +387,12 @@ export default function Home() {
             md1920:w-[7.813vw] md1920:text-[2.083vw] md1920:leading-[2.292vw] md1920:tracking-[-0.042vw]
             md720:text-[12px] md720:leading-[13.2px] md720:tracking-[-0.24px] md720:w-auto"
               >
-                Post
+                Offer
               </strong>
             </div>
             <div>
               <Image
-                src={img_discover}
+                src={img_sell_en}
                 alt="img_discover"
                 width={266}
                 height={506}
@@ -398,12 +403,12 @@ export default function Home() {
                         md1920:w-[7.813vw] md1920:text-[2.083vw] md1920:leading-[2.292vw] md1920:tracking-[-0.042vw]
             md720:text-[12px] md720:leading-[13.2px] md720:tracking-[-0.24px]  md720:w-auto"
               >
-                Discover
+                Sell
               </strong>
             </div>
             <div>
               <Image
-                src={img_chat}
+                src={img_request_en}
                 alt="img_chat"
                 width={266}
                 height={506}
@@ -414,12 +419,12 @@ export default function Home() {
                         md1920:w-[7.813vw] md1920:text-[2.083vw] md1920:leading-[2.292vw] md1920:tracking-[-0.042vw]
             md720:text-[12px] md720:leading-[13.2px] md720:tracking-[-0.24px]  md720:w-auto"
               >
-                Chat
+                Request
               </strong>
             </div>
             <div>
               <Image
-                src={img_profile}
+                src={img_chat_en}
                 alt="img_profile"
                 width={266}
                 height={506}
@@ -430,7 +435,7 @@ export default function Home() {
                         md1920:w-[7.813vw] md1920:text-[2.083vw] md1920:leading-[2.292vw] md1920:tracking-[-0.042vw]
             md720:text-[12px] md720:leading-[13.2px] md720:tracking-[-0.24px]  md720:w-auto"
               >
-                Profile
+                Chat
               </strong>
             </div>
           </div>
