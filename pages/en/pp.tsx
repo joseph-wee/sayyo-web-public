@@ -6,7 +6,7 @@ const pp = () => {
   return (
     <>
       <div className="relative pb-[264px] md720:pb-[173px] tall:pb-0">
-        <Header.GreenEn />
+        <Header />
 
         {/** content */}
         <div className="mx-auto pl-[18px] pr-[18px] pt-[113px] pb-[40px] max-w-[1030px] box-content">
