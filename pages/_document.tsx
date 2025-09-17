@@ -42,7 +42,7 @@ export default function Document() {
           property="og:description"
           content="Kết nối các người giải quyết vấn đề địa phương!"
         />
-        <link rel="icon" href="/sayyo/favicon.ico" />
+        <link rel="icon" href="/favicon.ico" />
 
         {/** 1. 즐겨찾기 아이콘?  2.아이패드 아이콘?*/}
         {/* <link rel="shortcut icon" href="http://test.repunch.io/favicon.ico" />
