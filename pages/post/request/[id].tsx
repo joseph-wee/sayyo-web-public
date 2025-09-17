@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -97,6 +97,59 @@ const usePostPage = () => {
     return exp.location;
   };
 
+  // 반응형: 한 줄에 표시 가능한 신청자 카드 개수 계산
+  const targetRepeat = 12; // 논리적으로 표시를 목표로 하는 최대 카드 개수
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const [fitCount, setFitCount] = useState<number>(targetRepeat);
+
+  useEffect(() => {
+    const measure = () => {
+      if (!containerRef.current) return;
+      const containerEl = containerRef.current;
+      // 컨테이너의 실제 콘텐츠 영역 너비 계산 (양쪽 padding 제외)
+      const styles = window.getComputedStyle(containerEl);
+      const paddingLeft = parseFloat(styles.getPropertyValue("padding-left")) || 0;
+      const paddingRight = parseFloat(styles.getPropertyValue("padding-right")) || 0;
+      const containerWidth = Math.max(0, containerEl.clientWidth - paddingLeft - paddingRight);
+
+      // 카드 한 개의 폭을 동적으로 측정
+      const probe = containerEl.querySelector(
+        '[data-item="true"]'
+      ) as HTMLElement | null;
+      let itemWidth = probe?.clientWidth ?? 56; // 이미지 폭 기준 폴백
+
+      // 컨테이너의 gap(px) 읽기 (Tailwind gap-[12px])
+      const gapStr = (
+        styles.getPropertyValue("column-gap") ||
+        styles.getPropertyValue("gap") ||
+        "12"
+      ).trim();
+      // overflow 상태에서 justify-between 적용 시 CSS gap이 0으로 계산될 수 있으므로, 계산에는 설계 간격 12px을 사용
+      let gap = parseInt(gapStr, 10);
+      if (!gap || Number.isNaN(gap)) {
+        gap = 12;
+      }
+
+      // 한 줄에 들어갈 수 있는 카드 수 계산. 실제 표시 목표(desiredCount)가 초과될 때만 '+N' 배지용으로 1칸 예약
+      const slot = itemWidth + gap;
+      let maxItems = Math.floor((containerWidth + gap) / Math.max(slot, 1));
+
+      const desiredCount = Math.min(targetRepeat, data?.userApply?.length || 0);
+
+      if (desiredCount > maxItems) {
+        // 초과 시: '+N' 배지를 위해 1칸 예약
+        setFitCount(Math.max(0, maxItems - 1));
+      } else {
+        // 모두 표시 가능: 배지 없이 모두 노출
+        setFitCount(desiredCount);
+      }
+    };
+
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, [data?.userApply?.length]);
+
   return (
     <>
       {/* <SayyoMeta /> */}
@@ -127,11 +180,13 @@ const usePostPage = () => {
             </div>
             {/** 헤더 */}
             <header className="h-[56px] pl-[16px] pr-[19px] flex justify-between items-center bg-sayyo_wht">
-              <Image
-                src={logo_sayyo_white}
-                alt="logo_sayyo_white"
-                className="w-[58px] h-[26px]"
-              />
+              <Link href="/">
+                <Image
+                  src={logo_sayyo_white}
+                  alt="logo_sayyo_white"
+                  className="w-[58px] h-[26px]"
+                />
+              </Link>
               <Image
                 src={ic_share_dark}
                 alt="ic_share_dark"
@@ -223,7 +278,7 @@ const usePostPage = () => {
 
                 {/** image */}
                 {data.urlImage && data.urlImage.length !== 0 ? (
-                  <Link href={`/sayyo/appHub?${path.split("/")[3]}`}>
+                  <Link href={`/appHub?${path.split("/")[3]}`}>
                     <div className="mt-[12px] flex gap-[1px] max-h-[217px] min-h-[96px] aspect-[736/217] rounded-[9px] cursor-pointer overflow-hidden">
                       {data.urlImage <= 3
                         ? data.urlImage.map((el: any, j: number) => {
@@ -296,7 +351,7 @@ const usePostPage = () => {
 
               {/** applicnats */}
               {data.userApply.length === 0 ? (
-                <Link href={`/sayyo/appHub?${path.split("/")[3]}`}>
+                <Link href={`/appHub?${path.split("/")[3]}`}>
                   <div className="mb-[20px] h-[142px] flex items-center justify-center bg-sayyo_wht cursor-pointer">
                     <div className="text-sayyo_subtext text-[16px] leading-[20.8px]">
                       No applicants yet
@@ -304,7 +359,7 @@ const usePostPage = () => {
                   </div>
                 </Link>
               ) : (
-                <Link href={`/sayyo/appHub?${path.split("/")[3]}`}>
+                <Link href={`/appHub?${path.split("/")[3]}`}>
                   <div className="mb-[20px] pt-[9.5px] min-h-[167px] box-border bg-sayyo_wht cursor-pointer">
                     <div className="flex justify-between items-center mb-[19px]">
                       <div className="flex pl-[20px] text-[16px] font-bold leading-[20.8px]">
@@ -317,105 +372,28 @@ const usePostPage = () => {
 
                         <span className="font-normal">{`${data.userApply.length}`}</span>
                       </div>
+                      {/** 상단 more 부분: 배지(하단)가 필요한 경우(오버플로우)만 노출 */}
                       <div className="pr-[21px] text-sayyo_subtext text-[12px] leading-[15.6px]">
-                        {data.userApply.length > 11 && (
-                          <span className="md767::hidden">More</span>
-                        )}
-                        {data.userApply.length > 10 && (
-                          <span className="hidden md767:inline md699:hidden">
-                            More
-                          </span>
-                        )}
-                        {data.userApply.length > 9 && (
-                          <span className="hidden md699:inline md631:hidden">
-                            More
-                          </span>
-                        )}
-                        {data.userApply.length > 8 && (
-                          <span className="hidden md631:inline md563:hidden">
-                            More
-                          </span>
-                        )}
-                        {data.userApply.length > 7 && (
-                          <span className="hidden md563:inline md495:hidden">
-                            More
-                          </span>
-                        )}
-                        {data.userApply.length > 6 && (
-                          <span className="hidden md495:inline md427:hidden">
-                            More
-                          </span>
-                        )}
-                        {data.userApply.length > 5 && (
-                          <span className="hidden md427:inline">More</span>
+                        {Math.min(targetRepeat, data.userApply.length) >
+                          fitCount && (
+                          <span className="md767:hidden">More</span>
                         )}
                       </div>
                     </div>
-                    {/** overflow hidden */}
+                    {/** 오버플로우 숨김 */}
                     <div
-                      className="grid gap-[12px] justify-between px-[16px] pb-[22px]
-          grid-cols-11
-          md767:grid-cols-10
-          md699:grid-cols-9
-          md631:grid-cols-8
-          md563:grid-cols-7
-          md495:grid-cols-6
-          md427:grid-cols-5
-          "
+                      ref={containerRef}
+                      className={`flex ${Math.min(targetRepeat, data.userApply.length) > fitCount ? 'justify-between' : 'gap-[12px]'} w-full px-[16px] pb-[22px] overflow-hidden`}
                     >
                       {/** 전체 너비 */}
-                      {data.userApply.map((i: any, j: number) => {
-                        if (j >= 11) {
-                          return;
-                        }
-                        return (
-                          !(data.userApply.length > 11 && j > 9) && (
-                            <div key={`${j}546`} className="md767:hidden">
-                              <div>
-                                <Image
-                                  src={avatarHandler(i.informationModel)}
-                                  alt="sample"
-                                  width={56}
-                                  height={56}
-                                  className="rounded-full mb-[8.42px] w-[56px] h-[56px]
-
-                      "
-                                />
-                                <div className="mb-[1px] text-center text-sayyo_l2 text-[12px] leading-[15.6px]">
-                                  {`${nameHandler(i.informationModel)}`}
-                                </div>
-                                <div className="text-center text-sayyo_subtext text-[12px] leading-[15.6px]">
-                                  {`${locationHandler(i.experience)}`}
-                                </div>
-                              </div>
-                            </div>
-                          )
-                        );
-                      })}
-                      {data.userApply.length > 11 && (
-                        <div className="md767:hidden">
-                          <div
-                            className={`flex items-center justify-center rounded-full mb-[8.42px] w-[56px] h-[56px] bg-sayyo_subtext text-sayyo_wht text-[16px] leading-[16px]
-
-                    `}
-                          >
-                            +{data.userApply.length - 10}
-                          </div>
-                          <div className="text-centerr text-sayyo_l2 text-[12px] leading-[15.6px]">
-                            More
-                          </div>
-                        </div>
-                      )}
-                      {/** 767 이하 */}
-                      {data.userApply.map((i: any, j: number) => {
-                        if (j >= 10) {
-                          return;
-                        }
-                        return (
-                          !(data.userApply.length > 10 && j > 8) && (
+                      {data.userApply
+                        .slice(0, fitCount)
+                        .map((i: any, j: number) => {
+                          return (
                             <div
                               key={`${j}546`}
-                              className="hidden md767:block md699:hidden"
+                              className="shrink-0 w-[56px]"
+                              data-item="true"
                             >
                               <div>
                                 <Image
@@ -423,9 +401,7 @@ const usePostPage = () => {
                                   alt="sample"
                                   width={56}
                                   height={56}
-                                  className="rounded-full mb-[8.42px] w-[56px] h-[56px]
-
-                      "
+                                  className="rounded-full mb-[8.42px] w-[56px] h-[56px]"
                                 />
                                 <div className="mb-[1px] text-center text-sayyo_l2 text-[12px] leading-[15.6px]">
                                   {`${nameHandler(i.informationModel)}`}
@@ -435,246 +411,21 @@ const usePostPage = () => {
                                 </div>
                               </div>
                             </div>
-                          )
-                        );
-                      })}
-                      {data.userApply.length > 10 && (
-                        <div className="hidden md767:block md699:hidden">
+                          );
+                        })}
+
+                      {/** 추가 표시: 목표(최대) 개수 또는 데이터 전체를 모두 보여줄 수 없을 때 노출 */}
+                      {Math.min(targetRepeat, data.userApply.length) >
+                        fitCount && (
+                        <div className="shrink-0 md767:hidden">
                           <div
-                            className={`flex items-center justify-center rounded-full mb-[8.42px] w-[56px] h-[56px] bg-sayyo_subtext text-sayyo_wht text-[16px] leading-[16px]
-
-                    `}
+                            className={`flex items-center justify-center rounded-full mb-[8.42px] w-[56px] h-[56px] bg-sayyo_subtext text-sayyo_wht text-[16px] leading-[16px]`}
                           >
-                            +{data.userApply.length - 9}
+                            +
+                            {Math.min(targetRepeat, data.userApply.length) -
+                              fitCount}
                           </div>
-                          <div className="flex items-center justify-center text-sayyo_l2 text-[12px] leading-[15.6px]">
-                            More
-                          </div>
-                        </div>
-                      )}
-                      {/** 699 이하 */}
-                      {data.userApply.map((i: any, j: number) => {
-                        if (j >= 9) {
-                          return;
-                        }
-                        return (
-                          !(data.userApply.length > 9 && j > 7) && (
-                            <div
-                              key={`${j}546`}
-                              className="hidden md699:block md631:hidden"
-                            >
-                              <div>
-                                <Image
-                                  src={avatarHandler(i.informationModel)}
-                                  alt="sample"
-                                  width={56}
-                                  height={56}
-                                  className="rounded-full mb-[8.42px] w-[56px] h-[56px]
-
-                      "
-                                />
-                                <div className="mb-[1px] text-center text-sayyo_l2 text-[12px] leading-[15.6px]">
-                                  {`${nameHandler(i.informationModel)}`}
-                                </div>
-                                <div className="text-center text-sayyo_subtext text-[12px] leading-[15.6px]">
-                                  {`${locationHandler(i.experience)}`}
-                                </div>
-                              </div>
-                            </div>
-                          )
-                        );
-                      })}
-                      {data.userApply.length > 9 && (
-                        <div className="hidden md699:block md631:hidden">
-                          <div
-                            className={`flex items-center justify-center rounded-full mb-[8.42px] w-[56px] h-[56px] bg-sayyo_subtext text-sayyo_wht text-[16px] leading-[16px]
-
-                    `}
-                          >
-                            +{data.userApply.length - 8}
-                          </div>
-                          <div className="flex items-center justify-center text-sayyo_l2 text-[12px] leading-[15.6px]">
-                            More
-                          </div>
-                        </div>
-                      )}
-                      {/** 631 이하 */}
-                      {data.userApply.map((i: any, j: number) => {
-                        if (j >= 8) {
-                          return;
-                        }
-                        return (
-                          !(data.userApply.length > 8 && j > 6) && (
-                            <div
-                              key={`${j}546`}
-                              className="hidden md631:block md563:hidden"
-                            >
-                              <div>
-                                <Image
-                                  src={avatarHandler(i.informationModel)}
-                                  alt="sample"
-                                  width={56}
-                                  height={56}
-                                  className="rounded-full mb-[8.42px] w-[56px] h-[56px]
-
-                      "
-                                />
-                                <div className="mb-[1px] text-center text-sayyo_l2 text-[12px] leading-[15.6px]">
-                                  {`${nameHandler(i.informationModel)}`}
-                                </div>
-                                <div className="text-center text-sayyo_subtext text-[12px] leading-[15.6px]">
-                                  {`${locationHandler(i.experience)}`}
-                                </div>
-                              </div>
-                            </div>
-                          )
-                        );
-                      })}
-                      {data.userApply.length > 8 && (
-                        <div className="hidden md631:block md563:hidden">
-                          <div
-                            className={`flex items-center justify-center rounded-full mb-[8.42px] w-[56px] h-[56px] bg-sayyo_subtext text-sayyo_wht text-[16px] leading-[16px]
-
-                    `}
-                          >
-                            +{data.userApply.length - 7}
-                          </div>
-                          <div className="flex items-center justify-center text-sayyo_l2 text-[12px] leading-[15.6px]">
-                            More
-                          </div>
-                        </div>
-                      )}
-                      {/** 563 이하 */}
-                      {data.userApply.map((i: any, j: number) => {
-                        if (j >= 7) {
-                          return;
-                        }
-                        return (
-                          !(data.userApply.length > 7 && j > 5) && (
-                            <div
-                              key={`${j}546`}
-                              className="hidden md563:block md495:hidden"
-                            >
-                              <div>
-                                <Image
-                                  src={avatarHandler(i.informationModel)}
-                                  alt="sample"
-                                  width={56}
-                                  height={56}
-                                  className="rounded-full mb-[8.42px] w-[56px] h-[56px]
-
-                      "
-                                />
-                                <div className="mb-[1px] text-center text-sayyo_l2 text-[12px] leading-[15.6px]">
-                                  {`${nameHandler(i.informationModel)}`}
-                                </div>
-                                <div className="text-center text-sayyo_subtext text-[12px] leading-[15.6px]">
-                                  {`${locationHandler(i.experience)}`}
-                                </div>
-                              </div>
-                            </div>
-                          )
-                        );
-                      })}
-                      {data.userApply.length > 7 && (
-                        <div className="hidden md563:block md495:hidden">
-                          <div
-                            className={`flex items-center justify-center rounded-full mb-[8.42px] w-[56px] h-[56px] bg-sayyo_subtext text-sayyo_wht text-[16px] leading-[16px]
-
-                    `}
-                          >
-                            +{data.userApply.length - 6}
-                          </div>
-                          <div className="flex items-center justify-center text-sayyo_l2 text-[12px] leading-[15.6px]">
-                            More
-                          </div>
-                        </div>
-                      )}
-                      {/** 495 이하 */}
-                      {data.userApply.map((i: any, j: number) => {
-                        if (j >= 6) {
-                          return;
-                        }
-                        return (
-                          !(data.userApply.length > 6 && j > 4) && (
-                            <div
-                              key={`${j}546`}
-                              className="hidden md495:block md427:hidden"
-                            >
-                              <div>
-                                <Image
-                                  src={avatarHandler(i.informationModel)}
-                                  alt="sample"
-                                  width={56}
-                                  height={56}
-                                  className="rounded-full mb-[8.42px] w-[56px] h-[56px]
-
-                      "
-                                />
-                                <div className="mb-[1px] text-center text-sayyo_l2 text-[12px] leading-[15.6px]">
-                                  {`${nameHandler(i.informationModel)}`}
-                                </div>
-                                <div className="text-center text-sayyo_subtext text-[12px] leading-[15.6px]">
-                                  {`${locationHandler(i.experience)}`}
-                                </div>
-                              </div>
-                            </div>
-                          )
-                        );
-                      })}
-                      {data.userApply.length > 6 && (
-                        <div className="hidden md495:block md427:hidden">
-                          <div
-                            className={`flex items-center justify-center rounded-full mb-[8.42px] w-[56px] h-[56px] bg-sayyo_subtext text-sayyo_wht text-[16px] leading-[16px]
-
-                    `}
-                          >
-                            +{data.userApply.length - 5}
-                          </div>
-                          <div className="flex items-center justify-center text-sayyo_l2 text-[12px] leading-[15.6px]">
-                            More
-                          </div>
-                        </div>
-                      )}
-                      {/** 427 이하 */}
-                      {data.userApply.map((i: any, j: number) => {
-                        if (j >= 5) {
-                          return;
-                        }
-                        return (
-                          !(data.userApply.length > 5 && j > 3) && (
-                            <div key={`${j}546`} className="hidden md427:block">
-                              <div>
-                                <Image
-                                  src={avatarHandler(i.informationModel)}
-                                  alt="sample"
-                                  width={56}
-                                  height={56}
-                                  className="rounded-full mb-[8.42px] w-[56px] h-[56px]
-
-                      "
-                                />
-                                <div className="mb-[1px] text-center text-sayyo_l2 text-[12px] leading-[15.6px]">
-                                  {`${nameHandler(i.informationModel)}`}
-                                </div>
-                                <div className="text-center text-sayyo_subtext text-[12px] leading-[15.6px]">
-                                  {`${locationHandler(i.experience)}`}
-                                </div>
-                              </div>
-                            </div>
-                          )
-                        );
-                      })}
-                      {data.userApply.length > 5 && (
-                        <div className="hidden md427:block">
-                          <div
-                            className={`flex items-center justify-center rounded-full mb-[8.42px] w-[56px] h-[56px] bg-sayyo_subtext text-sayyo_wht text-[16px] leading-[16px]
-
-                    `}
-                          >
-                            +{data.userApply.length - 4}
-                          </div>
-                          <div className="flex items-center justify-center text-sayyo_l2 text-[12px] leading-[15.6px]">
+                          <div className="text-center text-sayyo_l2 text-[12px] leading-[15.6px]">
                             More
                           </div>
                         </div>
@@ -690,7 +441,7 @@ const usePostPage = () => {
 
         "
             >
-              <Link href={`/sayyo/appHub?${path.split("/")[3]}`}>
+              <Link href={`/appHub?${path.split("/")[3]}`}>
                 <button className="w-full h-[48px] text-sayyo_wht text-[14px] font-bold leading-[18.2px] rounded-[8px] bg-sayyo_primary">
                   {tempOption !== "request" && <span>I want it</span>}
                   {tempOption === "request" && <span>Apply</span>}
