@@ -45,10 +45,12 @@ const Header = () => {
 
   return (
     <header
-      className={`absolute z-20 w-[100%] ${page === "etc" && "bg-sayyo_primary"}`}
+      className={`absolute z-20 w-[100%] ${
+        page === "etc" && "bg-sayyo_primary"
+      }`}
     >
       <div className="m-auto my-0 pl-[24px] pr-[20px] flex items-center justify-between max-w-[1280px] h-[78px] md720:h-[57px] ">
-        <Link href={`${lang === "vn" ? "" : `main`}`}>
+        <Link href={`${lang === "vn" ? "/" : `main`}`}>
           <Image
             src={logo_sayyo_small}
             alt="logo_sayyo_small"
@@ -58,17 +60,31 @@ const Header = () => {
         <div className="flex items-center gap-[17px]">
           <Link href={`${page === "main" ? "/" : path}`}>
             <button
-              className={`${lang === "vn" ? "font-Roboto font-bold text-base text-sayyo_wht underline underline-offset-[5px] md720:text-[12px] md720:leading-[15.6px] md720:underline-offset-[3px]" : "font-Roboto font-normal text-sayyo_wht md720:text-[12px] md720:leading-[15.6px]"} `}
+              className={`${
+                lang === "vn"
+                  ? "font-Roboto font-bold text-base text-sayyo_wht underline underline-offset-[5px] md720:text-[12px] md720:leading-[15.6px] md720:underline-offset-[3px]"
+                  : "font-Roboto font-normal text-sayyo_wht md720:text-[12px] md720:leading-[15.6px]"
+              } `}
             >
               Vietnamese
             </button>
           </Link>
           <div className="w-[1px] h-[13px] border-l-[1px] border-l-[#FFFFFF]/[.4] md720:h-[8.27px]" />
           <Link
-            href={`${page === "main" ? "/en/main" : lang === "vn" ? `/en${router.pathname}` : `/en${path}`}`}
+            href={`${
+              page === "main"
+                ? "/en/main"
+                : lang === "vn"
+                ? `/en${router.pathname}`
+                : `/en${path}`
+            }`}
           >
             <button
-              className={`${lang === "en" ? "font-Roboto font-bold text-base text-sayyo_wht underline underline-offset-[5px] md720:text-[12px] md720:leading-[15.6px] md720:underline-offset-[3px]" : "font-Roboto font-normal text-sayyo_wht md720:text-[12px] md720:leading-[15.6px]"} `}
+              className={`${
+                lang === "en"
+                  ? "font-Roboto font-bold text-base text-sayyo_wht underline underline-offset-[5px] md720:text-[12px] md720:leading-[15.6px] md720:underline-offset-[3px]"
+                  : "font-Roboto font-normal text-sayyo_wht md720:text-[12px] md720:leading-[15.6px]"
+              } `}
             >
               English
             </button>
@@ -76,10 +92,20 @@ const Header = () => {
 
           <div className="w-[1px] h-[13px] border-l-[1px] border-l-[#FFFFFF]/[.4] md720:h-[8.27px]" />
           <Link
-            href={`${page === "main" ? "/ko/main" : lang === "vn" ? `/ko${router.pathname}` : `/ko${path}`}`}
+            href={`${
+              page === "main"
+                ? "/ko/main"
+                : lang === "vn"
+                ? `/ko${router.pathname}`
+                : `/ko${path}`
+            }`}
           >
             <button
-              className={`${lang === "ko" ? "font-Roboto font-bold text-base text-sayyo_wht underline underline-offset-[5px] md720:text-[12px] md720:leading-[15.6px] md720:underline-offset-[3px]" : "font-Roboto font-normal text-sayyo_wht md720:text-[12px] md720:leading-[15.6px]"} `}
+              className={`${
+                lang === "ko"
+                  ? "font-Roboto font-bold text-base text-sayyo_wht underline underline-offset-[5px] md720:text-[12px] md720:leading-[15.6px] md720:underline-offset-[3px]"
+                  : "font-Roboto font-normal text-sayyo_wht md720:text-[12px] md720:leading-[15.6px]"
+              } `}
             >
               Korean
             </button>
