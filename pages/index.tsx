@@ -180,7 +180,7 @@ export default function Home() {
             className="mb-[222px] flex m-auto my-0 pt-[52px] pl-[82px] w-[1180px] h-[488px] box-border rounded-[24px] border-[1px] border-sayyo_bg_more shadow-[0_20px_20px_rgba(0,0,0,0.10)] bg-sayyo_wht
         md1920:mb-[11.563vw] md1920:pt-[2.708vw] md1920:pl-[4.271vw] md1920:w-[61.458vw] md1920:h-[25.417vw] md1920:rounded-[1.25vw]
 
-        md720:mb-[88.83px] md720:pt-[14.43px] md720:pl-[16.4px] pr-[16px] md720:w-[328px] md720:h-[184px]
+        md720:mb-[58.83px] md720:pt-[14.43px] md720:pl-[16.4px] pr-[16px] md720:w-[328px] md720:h-[214px]
         md720:rounded-[6.649px] "
           >
             <div className="flex flex-col items-center mr-[52px] md1920:mr-[2.708vw] md720:mr-[10px]">
@@ -212,7 +212,7 @@ export default function Home() {
             <div
               className="mr-[53px] w-[1px] h-[391px] border-l-[1px] border-l-sayyo_bg_more
           md1920:mr-[2.76vw] md1920:h-[20.365vw]
-          md720:mr-[12px] md720:h-[146px]"
+          md720:mr-[12px] md720:h-[184px]"
             />
             <div
               className="flex flex-col items-center mr-[58px]
@@ -246,7 +246,7 @@ export default function Home() {
             <div
               className="mr-[53px] w-[1px] h-[391px] border-l-[1px] border-l-sayyo_bg_more
           md1920:mr-[2.76vw] md1920:h-[20.365vw]
-          md720:mr-[15.6px] md720:h-[146px]"
+          md720:mr-[15.6px] md720:h-[184px]"
             />
             <div className="flex flex-col items-center">
               <Image
