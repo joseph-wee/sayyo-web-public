@@ -60,3 +60,6 @@ export { default as img_offer_ko } from "./img_offer_ko.png";
 export { default as img_sell_ko } from "./img_sell_ko.png";
 export { default as img_request_ko } from "./img_request_ko.png";
 export { default as img_chat_ko } from "./img_chat_ko.png";
+export { default as text_googlePlay_samll } from "./text_googlePlay_samll.svg";
+export { default as icon_appStore } from "./icon_appStore.svg";
+export { default as icon_googlePlay } from "./icon_googlePlay.svg";
