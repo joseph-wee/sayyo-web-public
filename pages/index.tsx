@@ -101,6 +101,7 @@ export default function Home() {
             alt="logo_sayyo"
             className="m-auto my-0 mb-[35.58px] md1920:mb-[2.061vw] md1920:w-[19.38vw] md720:mb-[9.55px]
           md720:w-[101px] md720:h-[48px]"
+            sizes="(max-width: 720px) 101px, 19.38vw"
           />
           <h3 className="mb-[140px] text-center font-Sriracha text-[38px] text-sayyo_wht leading-[45.6px] md1920:mb-[7.291vw] md1920:text-[1.979vw] md1920:leading-[2.375vw] md720:mb-[48px] md720:text-[11px] md720:leading-[13.2px]">
             Hãy kết nối với những người giải
@@ -418,6 +419,7 @@ export default function Home() {
                 src={logo_sayyo_medium}
                 alt="logo_sayyo_medium"
                 className="mr-[36px] md1920:mr-[1.875vw] md1920:w-[11.719vw] md720:w-[61.501px] md720:mr-[16.78px]"
+                sizes="(max-width: 720px) 61.5px, 11.719vw"
               />
               <strong
                 className="text-sayyo_wht font-Sriracha text-[27.536px] leading-[33.044px] tracking-[-0.55px]
@@ -440,6 +442,7 @@ export default function Home() {
                 width={266}
                 height={506}
                 className="mb-[34.25px] md1920:mb-[1.784vw] md1920:w-[13.854vw] md720:mb-[9.01px] md720:w-[75px]"
+                sizes="(max-width: 720px) 75px, (max-width: 1919px) 13.854vw, 266px"
               />
               <strong
                 className="mx-auto flex w-[250px] items-center justify-center text-sayyo_primary font-Sriracha text-[40px] font-normal leading-[44px] tracking-[-0.8px]
@@ -456,6 +459,7 @@ export default function Home() {
                 width={266}
                 height={506}
                 className="mb-[34.25px] md1920:mb-[1.784vw] md1920:w-[13.854vw] md720:mb-[9.01px] md720:w-[75px]"
+                sizes="(max-width: 720px) 75px, (max-width: 1919px) 13.854vw, 266px"
               />
               <strong
                 className="mx-auto flex items-center justify-center text-sayyo_primary font-Sriracha text-[40px] font-normal leading-[44px] tracking-[-0.8px]
@@ -472,6 +476,7 @@ export default function Home() {
                 width={266}
                 height={506}
                 className="mb-[34.25px] md1920:mb-[1.784vw] md1920:w-[13.854vw] md720:mb-[9.01px] md720:w-[75px]"
+                sizes="(max-width: 720px) 75px, (max-width: 1919px) 13.854vw, 266px"
               />
               <strong
                 className="mx-auto flex w-[150px] items-center justify-center text-sayyo_primary font-Sriracha text-[40px] font-normal leading-[44px] tracking-[-0.8px]
@@ -488,6 +493,7 @@ export default function Home() {
                 width={266}
                 height={506}
                 className="mb-[34.25px] md1920:mb-[1.784vw] md1920:w-[13.854vw] md720:mb-[9.01px] md720:w-[75px]"
+                sizes="(max-width: 720px) 75px, (max-width: 1919px) 13.854vw, 266px"
               />
               <strong
                 className="mx-auto flex w-[150px] items-center justify-center text-sayyo_primary font-Sriracha text-[40px] font-normal leading-[44px] tracking-[-0.8px]

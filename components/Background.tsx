@@ -26,11 +26,16 @@ const Background = () => {
         md720:w-[549.2px] md720:top-[163.06px]
         "
         >
-          <Image src={img_back_middle} alt="img_back_mddile" />
+          <Image src={img_back_middle} alt="img_back_mddile" sizes="100vw" />
         </div>
       </div>
       <div className="h-[618px] bg-sayyo_primary overflow-hidden md1920:h-[32.187vw] md720:h-[170px]">
-        <Image src={img_back2} alt="img_back" className="m-auto my-0 w-full" />
+        <Image
+          src={img_back2}
+          alt="img_back"
+          className="m-auto my-0 w-full"
+          sizes="100vw"
+        />
       </div>
       <div className="h-[318px] bg-sayyo_wht md1920:h-[16.562vw] md720:h-[105px]" />
     </div>
