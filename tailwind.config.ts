@@ -8,9 +8,9 @@ const config: Config = {
   ],
   theme: {
     fontFamily: {
-      Sriracha: ["Sriracha"],
-      Inter: ["Inter"],
-      Roboto: ["Roboto"],
+      Inter: ["var(--font-inter)", "Inter", "system-ui", "Arial"],
+      Roboto: ["var(--font-roboto)", "Roboto", "system-ui", "Arial"],
+      Sriracha: ["var(--font-sriracha)", "Sriracha", "cursive"],
       NanumSquare: ["NanumSquare"],
       NanumSquareRound: ["NanumSquareRound"],
     },
@@ -46,4 +46,3 @@ const config: Config = {
   plugins: [],
 };
 export default config;
-3;
