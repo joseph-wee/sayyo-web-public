@@ -57,7 +57,7 @@ export default function Document() {
         {/* <meta name="msapplication-TileColor" content="#da532c" />
     <meta name="theme-color" content="#ae4dvc" /> */}
       </Head>
-      <body className="font-Inter">
+      <body>
         <Main />
         <NextScript />
       </body>

@@ -8,11 +8,15 @@ const config: Config = {
   ],
   theme: {
     fontFamily: {
-      Inter: ["var(--font-inter)", "Inter", "system-ui", "Arial"],
-      Roboto: ["var(--font-roboto)", "Roboto", "system-ui", "Arial"],
-      Sriracha: ["var(--font-sriracha)", "Sriracha", "cursive"],
-      NanumSquare: ["NanumSquare"],
-      NanumSquareRound: ["NanumSquareRound"],
+      Inter: ["var(--font-inter)", "system-ui", "Arial"],
+      Roboto: ["var(--font-roboto)", "system-ui", "Arial"],
+      Sriracha: ["var(--font-sriracha)", "cursive"],
+      NanumSquare: ["var(--font-nanum-square)", "system-ui", "Arial"],
+      NanumSquareRound: [
+        "var(--font-nanum-square-round)",
+        "system-ui",
+        "Arial",
+      ],
     },
     colors: {
       sayyo_primary: "#00A939",
