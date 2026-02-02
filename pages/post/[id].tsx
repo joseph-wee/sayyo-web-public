@@ -411,16 +411,22 @@ const usePostPage = () => {
 
                 <div className="mt-[12px] mb-[6px] border-t-[1px] border-sayyo_bg_more border-dashed" />
                 <div className="flex gap-[8px] items-center">
-                  <Image
-                    src={userAvatar}
-                    alt="userAvatar"
-                    width={56}
-                    height={56}
-                    className="rounded-full w-[56px] h-[56px]"
-                  />
-                  <span className="text-[12px] leading-[13.2px]">
-                    {userName}
-                  </span>
+                  {userAvatar && userName ? (
+                    <>
+                      <Image
+                        src={userAvatar}
+                        alt="userAvatar"
+                        width={56}
+                        height={56}
+                        className="rounded-full w-[56px] h-[56px]"
+                      />
+                      <span className="text-[12px] leading-[13.2px]">
+                        {userName}
+                      </span>
+                    </>
+                  ) : (
+                    <div className="h-[56px]"></div>
+                  )}
                 </div>
               </div>
 
