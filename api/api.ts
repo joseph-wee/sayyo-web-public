@@ -20,6 +20,20 @@ export const apiGetDetailJob = async (id: number) => {
   }
 };
 
+/** 유저 정보 */
+export const apiGetUserInfo = async (id: number) => {
+  try {
+    const res = await axios({
+      method: "GET",
+      url: `get-info-user?userId=${id}`,
+    });
+    return res;
+  } catch (error: any) {
+    console.log(error);
+    return error;
+  }
+};
+
 /** api toc */
 export const apiPostTermsOfCondition = async () => {
   try {

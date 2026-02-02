@@ -29,6 +29,7 @@ const config: Config = {
     screens: {
       md720: { max: "720px" },
       md760: { max: "760px" },
+      md770: { max: "770px" },
       md970: { max: "970px" },
       md1080: { max: "1080px" },
       md1180: { max: "1180px" },
