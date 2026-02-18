@@ -346,7 +346,7 @@ const usePostPage = () => {
                 {data.urlImage && data.urlImage.length !== 0 ? (
                   <Link href={`/appHub?${path.split("/")[3]}`}>
                     <div className="mt-[12px] flex gap-[1px] max-h-[217px] min-h-[96px] aspect-[736/217] rounded-[9px] cursor-pointer overflow-hidden bg-sayyo_wht">
-                      {data.urlImage <= 3
+                      {data.urlImage.length <= 3
                         ? data.urlImage.map((el: any, j: number) => {
                             return (
                               <div
@@ -356,9 +356,12 @@ const usePostPage = () => {
                                 <Image
                                   src={el}
                                   alt="sample1"
-                                  layout="fill"
-                                  objectFit="cover"
-                                  objectPosition="center"
+                                  fill
+                                  sizes="(max-width: 736px) 100vw, 736px"
+                                  style={{
+                                    objectFit: "cover",
+                                    objectPosition: "center",
+                                  }}
                                 />
                               </div>
                             );
@@ -377,9 +380,12 @@ const usePostPage = () => {
                                   <Image
                                     src={el}
                                     alt="sample2"
-                                    layout="fill"
-                                    objectFit="cover"
-                                    objectPosition="center"
+                                    fill
+                                    sizes="(max-width: 736px) 100vw, 736px"
+                                    style={{
+                                      objectFit: "cover",
+                                      objectPosition: "center",
+                                    }}
                                   />
                                   <div className="absolute w-full h-full bg-opacity-40 bg-[#000000]"></div>
                                   <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[18px] text-sayyo_wht leading-[22.5px]">
@@ -396,9 +402,12 @@ const usePostPage = () => {
                                 <Image
                                   src={el}
                                   alt="sample1"
-                                  layout="fill"
-                                  objectFit="cover"
-                                  objectPosition="center"
+                                  fill
+                                  sizes="(max-width: 736px) 100vw, 736px"
+                                  style={{
+                                    objectFit: "cover",
+                                    objectPosition: "center",
+                                  }}
                                 />
                               </div>
                             );
