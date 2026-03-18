@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -11,39 +11,17 @@ const assetSrc = (asset: string | { src: string }) =>
 /** bg color transparent Header */
 const Header = () => {
   const router = useRouter();
-  const [page, setPage] = useState("");
-  const [path, setPath] = useState("");
-  const [lang, setLang] = useState("");
-
-  const pathGetter = () => {
-    setPath(router.pathname.substring(3));
-  };
-
-  const pageGetter = () => {
-    if (router.pathname === "/" || router.pathname.includes("main")) {
-      setPage("main");
-      return;
-    }
-    router.pathname !== "/" && setPage("etc");
-  };
-
-  const langGetter = () => {
-    if (router.pathname.includes("en")) {
-      setLang("en");
-      return;
-    }
-    if (router.pathname.includes("ko")) {
-      setLang("ko");
-      return;
-    }
-    setLang("vn");
-  };
-
-  useEffect(() => {
-    pageGetter();
-    pathGetter();
-    langGetter();
-  }, [router]);
+  const { pathname } = router;
+  const page = pathname === "/" || pathname.includes("main") ? "main" : "etc";
+  const path =
+    pathname.startsWith("/en") || pathname.startsWith("/ko")
+      ? pathname.substring(3)
+      : pathname;
+  const lang = pathname.includes("/en")
+    ? "en"
+    : pathname.includes("/ko")
+      ? "ko"
+      : "vn";
 
   return (
     <header
@@ -77,7 +55,7 @@ const Header = () => {
               page === "main"
                 ? "/en/main"
                 : lang === "vn"
-                ? `/en${router.pathname}`
+                ? `/en${pathname}`
                 : `/en${path}`
             }`}
           >
@@ -98,7 +76,7 @@ const Header = () => {
               page === "main"
                 ? "/ko/main"
                 : lang === "vn"
-                ? `/ko${router.pathname}`
+                ? `/ko${pathname}`
                 : `/ko${path}`
             }`}
           >

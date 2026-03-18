@@ -15,7 +15,7 @@ const assetSrc = (asset: string | { src: string }) =>
   typeof asset === "string" ? asset : asset.src;
 
 const useAppHub = () => {
-  const ref = useRef<any>();
+  const ref = useRef<HTMLDivElement | null>(null);
   const timerRef = useRef<any>(null);
   const [state, setState] = useState(0);
 
@@ -46,8 +46,17 @@ const useAppHub = () => {
     }, 2000);
   };
 
-  /** link Handler */
-  const linkHandelr = () => {
+  /** 렌더링시 실행 */
+  /** clear timeout */
+  const clearHandler = () => {
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+      timerRef.current = null;
+      setState((prev) => prev + 1);
+    }
+  };
+
+  useEffect(() => {
     let os = "android";
     const osInfo = navigator.userAgent;
     const iosDevice = ["iPhone", "iPad", "iPod", "Mac"];
@@ -60,14 +69,9 @@ const useAppHub = () => {
 
     if (os === "android") {
       androidLink();
-      return;
+    } else {
+      iosLink();
     }
-    iosLink();
-  };
-
-  /** 렌더링시 실행 */
-  useEffect(() => {
-    linkHandelr();
 
     window.addEventListener("visibilitychange", clearHandler);
     return () => {
@@ -80,15 +84,6 @@ const useAppHub = () => {
       ref.current.focus();
     }
   }, [ref]);
-
-  /** clear timeout */
-  const clearHandler = () => {
-    if (timerRef.current) {
-      clearTimeout(timerRef.current);
-      timerRef.current = null;
-      setState((prev) => prev + 1);
-    }
-  };
 
   return (
     <>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import Head from "next/head";
 import { useRouter } from "next/router";
@@ -39,34 +39,32 @@ const assetSrc = (asset: string | { src: string }) =>
 
 export default function Home() {
   const router = useRouter();
-  const [ready, setReady] = useState(false);
+  const isClient = typeof window !== "undefined";
+  const hasVisited = isClient
+    ? window.sessionStorage.getItem("sayyo-lang-redirected")
+    : null;
+  const browserLang = isClient
+    ? navigator.language.substring(0, 2).toLowerCase()
+    : null;
+  const redirectPath =
+    !isClient || hasVisited
+      ? null
+      : browserLang === "en"
+        ? "/en/main"
+        : browserLang === "ko"
+          ? "/ko/main"
+          : null;
 
   useEffect(() => {
-    const hasVisited = window.sessionStorage.getItem("sayyo-lang-redirected");
-
-    if (hasVisited) {
-      setReady(true);
+    if (!redirectPath) {
       return;
     }
 
     window.sessionStorage.setItem("sayyo-lang-redirected", "true");
+    router.replace(redirectPath);
+  }, [redirectPath, router]);
 
-    const browserLang = navigator.language.substring(0, 2).toLowerCase();
-
-    if (browserLang === "en") {
-      router.replace("/en/main");
-      return;
-    }
-
-    if (browserLang === "ko") {
-      router.replace("/ko/main");
-      return;
-    }
-
-    setReady(true);
-  }, [router]);
-
-  if (!ready) {
+  if (!isClient || redirectPath) {
     return null;
   }
 

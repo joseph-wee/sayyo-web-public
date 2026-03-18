@@ -46,22 +46,47 @@ const usePostPage = () => {
     setTimeout(() => setShare(false), 2000);
   };
 
+  /**
+   * 사용자의 브라우저 언어를 확인하여 EN, KO, VI 중 하나를 반환합니다.
+   * 일치하는 언어가 없을 경우 기본값(Default)을 설정할 수 있습니다.
+   */
+  function getSupportedLanguage() {
+    const browserLang = navigator.language;
+    const langCode = browserLang.substring(0, 2).toLowerCase();
+
+    switch (langCode) {
+      case "ko":
+        return "KO";
+      case "en":
+        return "EN";
+      case "vi":
+        return "VI";
+      default:
+        return "EN";
+    }
+  }
+
+  /** 유저 정보 호출 */
+  function getUserInfoHandler(id: number) {
+    apiGetUserInfo(id).then((res) => {
+      setUserAvatar(res.data.data.informationModel.avatar);
+      setUserName(res.data.data.informationModel.name);
+    });
+  }
+
   /** 상세화면 호출 핸들러 실행 */
   useEffect(() => {
-    url && apiHandler(Number(url.split("/")[2]));
-  }, [url]);
+    if (!url) {
+      return;
+    }
 
-  /** 상세화면 호출 핸들러 */
-  const apiHandler = (id: number) => {
-    apiGetDetailJob(id).then((res) => {
+    apiGetDetailJob(Number(url.split("/")[2])).then((res) => {
       const userLang = getSupportedLanguage();
 
-      // 1. userLang과 일치하는 객체 찾기
       const matchedPost = res.data.data.translationJobPosts.find(
         (post: any) => post.languageTranslation === userLang,
       );
 
-      // 2. 변수 할당 (일치하는 데이터가 없을 경우를 대비해 Optional Chaining 또는 기본값 설정)
       const title = matchedPost
         ? matchedPost.titleTranslation
         : res.data.data.title;
@@ -71,22 +96,11 @@ const usePostPage = () => {
 
       setTitle(title);
       setDescription(description);
-
       setData(res.data.data);
-
       setResCode(res.data.responseCode);
-
       getUserInfoHandler(res.data.data.userId);
     });
-  };
-
-  /** 유저 정보 호출 */
-  const getUserInfoHandler = (id: number) => {
-    apiGetUserInfo(id).then((res) => {
-      setUserAvatar(res.data.data.informationModel.avatar);
-      setUserName(res.data.data.informationModel.name);
-    });
-  };
+  }, [url]);
 
   // // id에 해당하는 포스트가 없을 때,
   // if (resCode === "404") {
@@ -186,31 +200,6 @@ const usePostPage = () => {
     window.addEventListener("resize", measure);
     return () => window.removeEventListener("resize", measure);
   }, [data?.userApply?.length]);
-
-  /**
-   * 사용자의 브라우저 언어를 확인하여 EN, KO, VI 중 하나를 반환합니다.
-   * 일치하는 언어가 없을 경우 기본값(Default)을 설정할 수 있습니다.
-   */
-  function getSupportedLanguage() {
-    // 1. 브라우저 언어 설정 가져오기 (예: "ko-KR", "en-US", "vi-VN")
-    const browserLang = navigator.language;
-
-    // 2. 앞의 두 글자만 추출하여 소문자로 변환 (Case-insensitive 비교를 위함)
-    const langCode = browserLang.substring(0, 2).toLowerCase();
-
-    // 3. 조건에 맞는 코드 반환
-    switch (langCode) {
-      case "ko":
-        return "KO";
-      case "en":
-        return "EN";
-      case "vi":
-        return "VI";
-      default:
-        // 일치하는 언어가 없을 때의 기본값 (예: 영어)
-        return "EN";
-    }
-  }
 
   return (
     <>
