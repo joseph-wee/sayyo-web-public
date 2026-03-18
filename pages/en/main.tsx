@@ -1,3 +1,7 @@
+import { useEffect, useState } from "react";
+
+import { useRouter } from "next/router";
+
 import {
   icon_app_store,
   icon_google_play,
@@ -34,6 +38,40 @@ const assetSrc = (asset: string | { src: string }) =>
   typeof asset === "string" ? asset : asset.src;
 
 export default function Home() {
+  const router = useRouter();
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    const hasRedirected = window.sessionStorage.getItem(
+      "sayyo-lang-redirected",
+    );
+
+    if (hasRedirected) {
+      setReady(true);
+      return;
+    }
+
+    const browserLang = navigator.language.substring(0, 2).toLowerCase();
+
+    if (browserLang === "ko") {
+      window.sessionStorage.setItem("sayyo-lang-redirected", "true");
+      router.replace("/ko/main");
+      return;
+    }
+
+    if (browserLang !== "en") {
+      window.sessionStorage.setItem("sayyo-lang-redirected", "true");
+      router.replace("/");
+      return;
+    }
+
+    setReady(true);
+  }, [router]);
+
+  if (!ready) {
+    return null;
+  }
+
   return (
     <>
       <div className="relative pb-[264px] md720:pb-[173px] tall:pb-0">

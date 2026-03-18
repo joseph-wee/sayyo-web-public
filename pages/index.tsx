@@ -1,4 +1,7 @@
+import { useEffect, useState } from "react";
+
 import Head from "next/head";
+import { useRouter } from "next/router";
 
 import {
   icon_app_store,
@@ -35,6 +38,38 @@ const assetSrc = (asset: string | { src: string }) =>
   typeof asset === "string" ? asset : asset.src;
 
 export default function Home() {
+  const router = useRouter();
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    const hasVisited = window.sessionStorage.getItem("sayyo-lang-redirected");
+
+    if (hasVisited) {
+      setReady(true);
+      return;
+    }
+
+    window.sessionStorage.setItem("sayyo-lang-redirected", "true");
+
+    const browserLang = navigator.language.substring(0, 2).toLowerCase();
+
+    if (browserLang === "en") {
+      router.replace("/en/main");
+      return;
+    }
+
+    if (browserLang === "ko") {
+      router.replace("/ko/main");
+      return;
+    }
+
+    setReady(true);
+  }, [router]);
+
+  if (!ready) {
+    return null;
+  }
+
   return (
     <>
       <Head>
