@@ -1,10 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
 import { logo_sayyo_small } from "../assets";
+
+const assetSrc = (asset: string | { src: string }) =>
+  typeof asset === "string" ? asset : asset.src;
 
 /** bg color transparent Header */
 const Header = () => {
@@ -51,8 +53,8 @@ const Header = () => {
     >
       <div className="m-auto my-0 pl-[24px] pr-[20px] flex items-center justify-between max-w-[1280px] h-[78px] md720:h-[57px] ">
         <Link href={`${lang === "vn" ? "/" : `main`}`}>
-          <Image
-            src={logo_sayyo_small}
+          <img
+            src={assetSrc(logo_sayyo_small)}
             alt="logo_sayyo_small"
             className="md720:w-[46.5px]"
           />
@@ -125,8 +127,8 @@ const HeaderGreen = () => {
     <header className="absolute z-20 w-[100%] bg-sayyo_primary ">
       <div className="m-auto my-0 pl-[24px] pr-[20px] flex items-center justify-between max-w-[1280px] h-[78px] md720:h-[57px]">
         <Link href="/">
-          <Image
-            src={logo_sayyo_small}
+          <img
+            src={assetSrc(logo_sayyo_small)}
             alt="logo_sayyo_small"
             className="md720:w-[46.5px]"
           />
@@ -153,8 +155,8 @@ const HeaderEn = () => {
     <header className="absolute z-20 w-[100%]">
       <div className="m-auto my-0 pl-[24px] pr-[20px] flex items-center justify-between max-w-[1280px] h-[78px] md720:h-[57px]">
         <Link href="/en/main">
-          <Image
-            src={logo_sayyo_small}
+          <img
+            src={assetSrc(logo_sayyo_small)}
             alt="logo_sayyo_small"
             className="md720:w-[46.5px]"
           />
@@ -189,8 +191,8 @@ const HeaderGreenEn = () => {
       md720:h-[57px] "
       >
         <Link href="/en/main">
-          <Image
-            src={logo_sayyo_small}
+          <img
+            src={assetSrc(logo_sayyo_small)}
             alt="logo_sayyo_small"
             className="md720:w-[46.5px]"
           />

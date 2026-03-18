@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 
-import Image from "next/image";
 import Link from "next/link";
 
 import {
@@ -11,6 +10,9 @@ import {
   text_googlePlay_samll,
 } from "../assets";
 import SayyoMeta from "../components/SayyoMeta";
+
+const assetSrc = (asset: string | { src: string }) =>
+  typeof asset === "string" ? asset : asset.src;
 
 const useAppHub = () => {
   const ref = useRef<any>();
@@ -100,7 +102,7 @@ const useAppHub = () => {
         <div>
           <Link href="/sayyo">
             <div className="mx-auto justify-center mb-[14.5px] w-[135px] h-[64px]">
-              <Image src={logo_sayyo} alt="logo" />
+              <img src={assetSrc(logo_sayyo)} alt="logo" />
             </div>
           </Link>
           <p className="mx-auto mb-[76px] w-[188px] text-center text-sayyo_wht font-Sriracha text-[13px] leading-[15.6px] tracking-[-0.26px]">
@@ -116,15 +118,15 @@ const useAppHub = () => {
               )
             }
           >
-            <Image
-              src={icon_googlePlay}
+            <img
+              src={assetSrc(icon_googlePlay)}
               alt="icon_google"
               width={36.252}
               height={40}
             />
 
-            <Image
-              src={text_googlePlay_samll}
+            <img
+              src={assetSrc(text_googlePlay_samll)}
               alt="text_google_play"
               width={103.367}
               className="absolute left-[80px] top-[24px]"
@@ -142,15 +144,15 @@ const useAppHub = () => {
               window.open("https://apps.apple.com/app/sayyo/id6504123159")
             }
           >
-            <Image
-              src={icon_appStore}
+            <img
+              src={assetSrc(icon_appStore)}
               alt="icon_appStore"
               width={39.113}
               height={38}
             />
 
-            <Image
-              src={text_app_store}
+            <img
+              src={assetSrc(text_app_store)}
               alt="text_app_store"
               width={90}
               className="absolute left-[80px] top-[24px]"
@@ -160,9 +162,9 @@ const useAppHub = () => {
             </span>
           </button>
 
-          {/* <Image src={btn_img_googlePlay} alt="btn_googlePlay" width={260} /> */}
+          {/* <Image quality={100} src={btn_img_googlePlay} alt="btn_googlePlay" width={260} /> */}
 
-          {/* <Image src={btn_img_appStore} alt="btn_appStore" width={260} /> */}
+          {/* <Image quality={100} src={btn_img_appStore} alt="btn_appStore" width={260} /> */}
         </div>
         <p className="text-sayyo_wht font-Roboto text-[13px] leading-[16.9px]">
           2024 Sayyo All Rights Reserved.

@@ -1,19 +1,19 @@
 import React from "react";
 
-import Image from "next/image";
-
 import { img_back, img_back2, img_back_middle } from "../assets";
+
+const assetSrc = (asset: string | { src: string }) =>
+  typeof asset === "string" ? asset : asset.src;
 
 const Background = () => {
   return (
     <div className="w-full absolute top-0">
       <div className="h-[765px] bg-sayyo_primary overflow-hidden md1920:h-[39.843vw] md720:h-[240px]">
-        <Image
-          src={img_back}
-          alt="img_back"
+        <img
+          src={assetSrc(img_back)}
+          alt=""
+          aria-hidden
           className="m-auto my-0 w-full"
-          sizes="100vw"
-          priority
           fetchPriority="high"
         />
       </div>
@@ -26,15 +26,21 @@ const Background = () => {
         md720:w-[549.2px] md720:top-[163.06px]
         "
         >
-          <Image src={img_back_middle} alt="img_back_mddile" sizes="100vw" />
+          <img
+            src={assetSrc(img_back_middle)}
+            alt=""
+            aria-hidden
+            loading="lazy"
+          />
         </div>
       </div>
       <div className="h-[618px] bg-sayyo_primary overflow-hidden md1920:h-[32.187vw] md720:h-[170px]">
-        <Image
-          src={img_back2}
-          alt="img_back"
+        <img
+          src={assetSrc(img_back2)}
+          alt=""
+          aria-hidden
           className="m-auto my-0 w-full"
-          sizes="100vw"
+          loading="lazy"
         />
       </div>
       <div className="h-[318px] bg-sayyo_wht md1920:h-[16.562vw] md720:h-[105px]" />

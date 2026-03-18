@@ -1,9 +1,11 @@
 import React from "react";
 
-import Image from "next/image";
 import Link from "next/link";
 
 import { btn_instagram_color, logo_mobileto_black } from "../assets";
+
+const assetSrc = (asset: string | { src: string }) =>
+  typeof asset === "string" ? asset : asset.src;
 
 const Footer = () => {
   return (
@@ -41,8 +43,8 @@ const Footer = () => {
           className="flex items-center"
           onClick={() => window.open("https://www.instagram.com/sayyo.viet")}
         >
-          <Image
-            src={btn_instagram_color}
+          <img
+            src={assetSrc(btn_instagram_color)}
             alt="btn_instagram"
             className="mr-[12px] md720:mr-0"
           />
@@ -72,8 +74,8 @@ const Footer = () => {
       >
         2024 Sayyo Bảo lưu mọi quyền.
       </span>
-      <Image
-        src={logo_mobileto_black}
+      <img
+        src={assetSrc(logo_mobileto_black)}
         alt="logo_mobileto"
         className="mx-auto md1920:w-[11.042vw] min-w-[96.2px] md720:w-[96.2px] cursor-pointer"
         onClick={() => window.open("https://www.mobileto.io")}
@@ -118,8 +120,8 @@ const FooterEn = () => {
           className="flex items-center"
           onClick={() => window.open("https://www.instagram.com/sayyo.viet")}
         >
-          <Image
-            src={btn_instagram_color}
+          <img
+            src={assetSrc(btn_instagram_color)}
             alt="btn_instagram"
             className="mr-[12px] md720:mr-0"
           />
@@ -149,8 +151,8 @@ const FooterEn = () => {
       >
         2024 Sayyo All Rights Reserved.
       </span>
-      <Image
-        src={logo_mobileto_black}
+      <img
+        src={assetSrc(logo_mobileto_black)}
         alt="logo_mobileto"
         className="mx-auto md1920:w-[11.042vw] min-w-[96.2px] md720:w-[96.2px] cursor-pointer"
         onClick={() => window.open("https://www.mobileto.io")}
@@ -195,8 +197,8 @@ const FooterKo = () => {
           className="flex items-center"
           onClick={() => window.open("https://www.instagram.com/sayyo.viet")}
         >
-          <Image
-            src={btn_instagram_color}
+          <img
+            src={assetSrc(btn_instagram_color)}
             alt="btn_instagram"
             className="mr-[12px] md720:mr-0"
           />
@@ -226,8 +228,8 @@ const FooterKo = () => {
       >
         2024 Sayyo All Rights Reserved.
       </span>
-      <Image
-        src={logo_mobileto_black}
+      <img
+        src={assetSrc(logo_mobileto_black)}
         alt="logo_mobileto"
         className="mx-auto md1920:w-[11.042vw] min-w-[96.2px] md720:w-[96.2px] cursor-pointer"
         onClick={() => window.open("https://www.mobileto.io")}

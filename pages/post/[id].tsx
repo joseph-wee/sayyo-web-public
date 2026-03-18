@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 
@@ -15,6 +14,9 @@ import {
   logo_sayyo_white,
 } from "../../assets";
 import test from "../test";
+
+const assetSrc = (asset: string | { src: string }) =>
+  typeof asset === "string" ? asset : asset.src;
 
 type apiRes = {};
 
@@ -241,14 +243,14 @@ const usePostPage = () => {
             {/** 헤더 */}
             <header className="h-[56px] pl-[16px] pr-[19px] flex justify-between items-center bg-sayyo_wht">
               <Link href="/">
-                <Image
-                  src={logo_sayyo_white}
+                <img
+                  src={assetSrc(logo_sayyo_white)}
                   alt="logo_sayyo_white"
                   className="w-[58px] h-[26px]"
                 />
               </Link>
-              <Image
-                src={ic_share_dark}
+              <img
+                src={assetSrc(ic_share_dark)}
                 alt="ic_share_dark"
                 onClick={() => shareHandler()}
                 className="w-[24px] h-[24px] cursor-pointer"
@@ -279,17 +281,17 @@ const usePostPage = () => {
                     {/* {tempOption === "offer" && (
                   )} */}
                     <div className="relative w-[13px] h-[14px]">
-                      <Image
-                        src={ic_pay}
+                      <img
+                        src={assetSrc(ic_pay)}
                         alt="ic_pay"
                         className="absolute -left-[1px]"
                       />
                     </div>
                     {/* {tempOption === "sell" && (
-                      <Image src={ic_pay} alt="ic_pay" />
+                      <Image quality={100} src={ic_pay} alt="ic_pay" />
                     )}
                     {tempOption === "request" && (
-                      <Image src={ic_pay_request} alt="ic_pay_request" />
+                      <Image quality={100} src={ic_pay_request} alt="ic_pay_request" />
                     )} */}
 
                     <div className="text-sayyo_l2 text-[14px] leading-[16.8px]">
@@ -308,7 +310,7 @@ const usePostPage = () => {
                   {/** 옵션 */}
                   {data.mainCategoryId !== 2 && (
                     <div className="mb-[6px] flex items-center gap-[8px]">
-                      <Image src={ic_document} alt="ic_document" />
+                      <img src={assetSrc(ic_document)} alt="ic_document" />
                       <div className="flex items-center gap-[6px] text-sayyo_l2 text-[14px] leading-[16.8px]">
                         {data.gender !== "NOMATTER" && (
                           <>
@@ -335,7 +337,7 @@ const usePostPage = () => {
 
                   {/** 위치 */}
                   <div className="flex items-center gap-[8px]">
-                    <Image src={ic_pin} alt="ic_pin" />
+                    <img src={assetSrc(ic_pin)} alt="ic_pin" />
                     <div className="text-sayyo_l2 text-[14px] leading-[16.8px]">
                       {`${data.location}`}
                     </div>
@@ -353,15 +355,10 @@ const usePostPage = () => {
                                 className="flex-1 relative bg-sayyo_wht"
                                 key={`abx${j}`}
                               >
-                                <Image
+                                <img
                                   src={el}
                                   alt="sample1"
-                                  fill
-                                  sizes="(max-width: 736px) 100vw, 736px"
-                                  style={{
-                                    objectFit: "cover",
-                                    objectPosition: "center",
-                                  }}
+                                  className="w-full h-full object-cover object-center"
                                 />
                               </div>
                             );
@@ -377,15 +374,10 @@ const usePostPage = () => {
                                   className="flex-1 relative bg-sayyo_wht"
                                   key={`${j}as`}
                                 >
-                                  <Image
+                                  <img
                                     src={el}
                                     alt="sample2"
-                                    fill
-                                    sizes="(max-width: 736px) 100vw, 736px"
-                                    style={{
-                                      objectFit: "cover",
-                                      objectPosition: "center",
-                                    }}
+                                    className="w-full h-full object-cover object-center"
                                   />
                                   <div className="absolute w-full h-full bg-opacity-40 bg-[#000000]"></div>
                                   <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[18px] text-sayyo_wht leading-[22.5px]">
@@ -399,15 +391,10 @@ const usePostPage = () => {
                                 className="flex-1 relative bg-sayyo_wht"
                                 key={`abx${j}`}
                               >
-                                <Image
+                                <img
                                   src={el}
                                   alt="sample1"
-                                  fill
-                                  sizes="(max-width: 736px) 100vw, 736px"
-                                  style={{
-                                    objectFit: "cover",
-                                    objectPosition: "center",
-                                  }}
+                                  className="w-full h-full object-cover object-center"
                                 />
                               </div>
                             );
@@ -422,11 +409,9 @@ const usePostPage = () => {
                 <div className="flex gap-[8px] items-center">
                   {userAvatar && userName ? (
                     <>
-                      <Image
+                      <img
                         src={userAvatar}
                         alt="userAvatar"
-                        width={56}
-                        height={56}
                         className="rounded-full w-[56px] h-[56px]"
                       />
                       <span className="text-[12px] leading-[13.2px]">
@@ -489,11 +474,9 @@ const usePostPage = () => {
                               data-item="true"
                             >
                               <div>
-                                <Image
+                                <img
                                   src={avatarHandler(i.informationModel)}
                                   alt="sample"
-                                  width={56}
-                                  height={56}
                                   className="rounded-full mb-[8.42px] w-[56px] h-[56px]"
                                 />
                                 <div className="mb-[1px] text-center text-sayyo_l2 text-[12px] leading-[15.6px]">

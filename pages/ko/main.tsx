@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 import {
   icon_app_store,
   icon_google_play,
@@ -32,6 +30,9 @@ import {
 } from "../../assets";
 import { Background, Footer, Header } from "../../components";
 
+const assetSrc = (asset: string | { src: string }) =>
+  typeof asset === "string" ? asset : asset.src;
+
 export default function Home() {
   return (
     <>
@@ -41,8 +42,8 @@ export default function Home() {
         {/** content */}
         <div className="relative z-10 mx-auto top-0 pt-[200px] max-w-[1280px] md1920:pt-[10.42vw] md720:max-w-[328px] md720:pt-[74px]">
           {/** main logo, introduce */}
-          <Image
-            src={logo_sayyo}
+          <img
+            src={assetSrc(logo_sayyo)}
             alt="logo_sayyo"
             className="m-auto my-0 mb-[35.58px] md1920:mb-[2.061vw] md1920:w-[19.38vw] md720:mb-[9.55px]
           md720:w-[101px] md720:h-[48px]"
@@ -54,52 +55,52 @@ export default function Home() {
           </h3>
           {/** app qr code */}
           <div className="m-auto mb-[89px] pl-[86px] pr-[116.9px] w-[1180px] h-[179px] flex items-center bg-sayyo_wht rounded-[25px] shadow-[0px_4.972px_24.861px_0px_rgba(0,0,0,0.25)] md1920:mb-[4.635vw] md1920:pl-[4.479vw] md1920:pr-[6.089vw] md1920:w-[61.458vw] md1920:h-[9.322vw] md1920:rounded-[1.302vw] md720:pl-[26.56px] md720:pr-[26.1px] md720:w-[328px] md720:h-[49.6px] md720:rounded-[6.89px] md720:mb-[24.66px]">
-            <Image
-              src={icon_google_play}
+            <img
+              src={assetSrc(icon_google_play)}
               alt="icon_google_play"
               className="mr-[21.18px] md1920:mr-[1.103vw] md1920:w-[2.447vw] md720:mr-[6.03px] md720:w-[12.81px] md720:h-[14.13px]"
             />
-            <Image
-              src={text_google_play}
+            <img
+              src={assetSrc(text_google_play)}
               alt="text_google_play"
               className="mr-[98.73px] md1920:mr-[5.142vw] md1920:w-[10.885vw] md720:mr-[26.44px] md720:w-[57.7px] md720:h-[9.69px]"
             />
-            <Image
-              src={img_qr_and}
+            <img
+              src={assetSrc(img_qr_and)}
               alt="icon_qr_code"
               className="mr-[59.9px] w-[69.1px] h-[69.1px] md1920:mr-[3.119vw] md1920:w-[3.645vw] md1920:h-[3.645vw] md720:mr-[13.98px] md720:w-[24.36px] md720:h-[24.36px]"
             />
             <div className="w-[1px] h-[94px] border-l-[1px] border-l-sayyo_bg_more mr-[73.5px] md1920:mr-[3.828vw] md1920:h-[4.895vw] md720:mr-[20.37px] md720:h-[26px]" />
-            <Image
-              src={icon_app_store}
+            <img
+              src={assetSrc(icon_app_store)}
               alt="icon_app_store"
               className="mr-[26px] md1920:mr-[1.354vw] md1920:w-[2.76vw] md720:mr-[7.2px] md720:w-[14.54px] md720:h-[14.39px]"
             />
-            <Image
-              src={text_app_store}
+            <img
+              src={assetSrc(text_app_store)}
               alt="text_app_store"
               className="mr-[65.06px] md1920:mr-[3.388vw] md1920:w-[9.739vw] md720:mr-[15.07px] md720:w-[51.79px] md720:h-[10.39px]"
             />
-            <Image
-              src={img_qr_ios}
+            <img
+              src={assetSrc(img_qr_ios)}
               alt="icon_qr_code"
               className="w-[69.1px] h-[69.1px] md1920:w-[3.645vw] md1920:h-[3.645vw] md720:w-[25.06px] md720:h-[25.05px]"
             />
           </div>
           {/** man, woman */}
           <div className="relative mx-auto mb-[238px] pt-[48px] max-w-[1180px] md1920:mb-[12.396vw] md1920:pt-[2.5vw] md1920:w-[61.458vw] md720:mb-[55.34px] md720:pt-[7.18px]">
-            <Image
-              src={img_man}
+            <img
+              src={assetSrc(img_man)}
               alt="img_man"
               className="absolute top-[17px] left-[36px] md1920:top-[0.885vw] md1920:left-[1.875vw] md1920:w-[10.677vw] md720:w-[55.68px] md720:h-[47.51px] md720:left-0 md720:top-[4.71px]"
             />
-            <Image
-              src={img_place}
+            <img
+              src={assetSrc(img_place)}
               alt="img_place"
               className="absolute top-[160px] left-[208px] md1920:top-[8.333vw] md1920:left-[10.833vw] md1920:w-[4.27vw] md720:w-[22.7px] md720:h-[22.7px] md720:top-[44.33px] md720:left-[47.65px]"
             />
-            <Image
-              src={img_woman}
+            <img
+              src={assetSrc(img_woman)}
               alt="img_man"
               className="absolute top-0 right-0 md1920:w-[14.479vw] md720:w-[75.69px] md720:h-[63.16px]"
             />
@@ -128,8 +129,8 @@ export default function Home() {
         md720:mb-[88.83px] md720:pt-[14.43px] md720:pl-[16.4px] pr-[16px] md720:w-[328px] md720:h-[184px] md720:rounded-[6.649px]"
           >
             <div className="flex flex-col items-center mr-[52px] md1920:mr-[2.708vw] md720:mr-[10px]">
-              <Image
-                src={icon_person}
+              <img
+                src={assetSrc(icon_person)}
                 alt="icon_person"
                 className="mb-[46px] md1920:mb-[2.396vw] md1920:w-[7.917vw] md720:mb-[12.46px] md720:w-[42.108px] md720:h-[42.108px]"
               />
@@ -163,8 +164,8 @@ export default function Home() {
           md1920:mr-[3.021vw]
           md720:mr-[13px]"
             >
-              <Image
-                src={icon_hand}
+              <img
+                src={assetSrc(icon_hand)}
                 alt="icon_person"
                 className="mb-[46px] md1920:mb-[2.396vw] md1920:w-[7.917vw] md720:mb-[12.46px] md720:w-[42.108px] md720:h-[42.108px]"
               />
@@ -193,8 +194,8 @@ export default function Home() {
           md720:mr-[15.6px] md720:h-[146px]"
             />
             <div className="flex flex-col items-center">
-              <Image
-                src={icon_people}
+              <img
+                src={assetSrc(icon_people)}
                 alt="icon_person"
                 className="mb-[46px] md1920:mb-[2.396vw] md1920:w-[7.917vw] md720:mb-[12.46px] md720:w-[42.108px] md720:h-[42.108px]"
               />
@@ -257,8 +258,8 @@ export default function Home() {
         md720:mb-[72.3px] md720:w-full"
           >
             <div className="flex flex-col items-center w-[196px] md1920:w-[10.208vw] md720:w-[54.298px]">
-              <Image
-                src={icon_language}
+              <img
+                src={assetSrc(icon_language)}
                 alt="icon_language"
                 className="mb-[8px] md1920:mb-[0.417vw] md1920:w-[4.896vw] md720:mb-[2.22px] md720:w-[26.041px]"
               />
@@ -272,8 +273,8 @@ export default function Home() {
               </strong>
             </div>
             <div className="flex flex-col items-center w-[196px] md1920:w-[10.208vw] md720:w-[54.298px]">
-              <Image
-                src={icon_sports}
+              <img
+                src={assetSrc(icon_sports)}
                 alt="icon_sports"
                 className="mb-[8px] md1920:mb-[0.417vw] md720:mb-[2.22px]"
               />
@@ -287,8 +288,8 @@ export default function Home() {
               </strong>
             </div>
             <div className="flex flex-col items-center w-[196px] md1920:w-[10.208vw] md720:w-[54.298px]">
-              <Image
-                src={icon_music}
+              <img
+                src={assetSrc(icon_music)}
                 alt="icon_music"
                 className="mb-[8px] md1920:mb-[0.417vw] md720:mb-[2.22px]"
               />
@@ -302,8 +303,8 @@ export default function Home() {
               </strong>
             </div>
             <div className="flex flex-col items-center w-[196px] md1920:w-[10.208vw] md720:w-[54.298px]">
-              <Image
-                src={icon_help}
+              <img
+                src={assetSrc(icon_help)}
                 alt="icon_help"
                 className="mb-[8px] md1920:mb-[0.417vw] md720:mb-[2.22px]"
               />
@@ -317,8 +318,8 @@ export default function Home() {
               </strong>
             </div>
             <div className="flex flex-col items-center w-[196px] md1920:w-[10.208vw] md720:w-[54.298px]">
-              <Image
-                src={icon_sale}
+              <img
+                src={assetSrc(icon_sale)}
                 alt="icon_sale"
                 className="mb-[8px] md1920:mb-[0.417vw] md720:mb-[2.22px]"
               />
@@ -332,8 +333,8 @@ export default function Home() {
               </strong>
             </div>
             <div className="flex flex-col items-center w-[196px] md1920:w-[10.208vw] md720:w-[54.298px]">
-              <Image
-                src={icon_recruit}
+              <img
+                src={assetSrc(icon_recruit)}
                 alt="icon_recruit"
                 className="mb-[8px] md1920:mb-[0.417vw] md720:mb-[2.22px]"
               />
@@ -354,8 +355,8 @@ export default function Home() {
         md720:mb-[16.59px] md720:w-full"
           >
             <div className="flex items-center">
-              <Image
-                src={logo_sayyo_medium}
+              <img
+                src={assetSrc(logo_sayyo_medium)}
                 alt="logo_sayyo_medium"
                 className="mr-[36px] md1920:mr-[1.875vw] md1920:w-[11.719vw] md720:w-[61.501px] md720:mr-[16.78px]"
               />
@@ -374,11 +375,9 @@ export default function Home() {
         md720:mb-[48.8px] md720:gap-[10.24px] md720:w-[328px]"
           >
             <div>
-              <Image
-                src={img_offer_ko}
+              <img
+                src={assetSrc(img_offer_ko)}
                 alt="img_post"
-                width={266}
-                height={506}
                 className="mb-[34.25px] md1920:mb-[1.784vw] md1920:w-[13.854vw] md720:mb-[9.01px] md720:w-[75px]"
               />
               <strong
@@ -390,11 +389,9 @@ export default function Home() {
               </strong>
             </div>
             <div>
-              <Image
-                src={img_sell_ko}
+              <img
+                src={assetSrc(img_sell_ko)}
                 alt="img_discover"
-                width={266}
-                height={506}
                 className="mb-[34.25px] md1920:mb-[1.784vw] md1920:w-[13.854vw] md720:mb-[9.01px] md720:w-[75px]"
               />
               <strong
@@ -406,11 +403,9 @@ export default function Home() {
               </strong>
             </div>
             <div>
-              <Image
-                src={img_request_ko}
+              <img
+                src={assetSrc(img_request_ko)}
                 alt="img_chat"
-                width={266}
-                height={506}
                 className="mb-[34.25px] md1920:mb-[1.784vw] md1920:w-[13.854vw] md720:mb-[9.01px] md720:w-[75px]"
               />
               <strong
@@ -422,11 +417,9 @@ export default function Home() {
               </strong>
             </div>
             <div>
-              <Image
-                src={img_chat_ko}
+              <img
+                src={assetSrc(img_chat_ko)}
                 alt="img_profile"
-                width={266}
-                height={506}
                 className="mb-[34.25px] md1920:mb-[1.784vw] md1920:w-[13.854vw] md720:mb-[9.01px] md720:w-[75px]"
               />
               <strong
