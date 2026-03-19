@@ -25,9 +25,8 @@ const Header = () => {
 
   return (
     <header
-      className={`absolute z-20 w-[100%] ${
-        page === "etc" && "bg-sayyo_primary"
-      }`}
+      className={`absolute z-20 w-[100%] ${page === "etc" && "bg-sayyo_primary"
+        }`}
     >
       <div className="m-auto my-0 pl-[24px] pr-[20px] flex items-center justify-between max-w-[1280px] h-[78px] md720:h-[57px] ">
         <Link href={`${lang === "vn" ? "/" : `main`}`}>
@@ -40,31 +39,28 @@ const Header = () => {
         <div className="flex items-center gap-[17px]">
           <Link href={`${page === "main" ? "/" : path}`}>
             <button
-              className={`${
-                lang === "vn"
+                className={`cursor-pointer ${lang === "vn"
                   ? "font-Roboto font-bold text-base text-sayyo_wht underline underline-offset-[5px] md720:text-[12px] md720:leading-[15.6px] md720:underline-offset-[3px]"
                   : "font-Roboto font-normal text-sayyo_wht md720:text-[12px] md720:leading-[15.6px]"
-              } `}
+                } `}
             >
               Vietnamese
             </button>
           </Link>
           <div className="w-[1px] h-[13px] border-l-[1px] border-l-[#FFFFFF]/[.4] md720:h-[8.27px]" />
           <Link
-            href={`${
-              page === "main"
-                ? "/en/main"
-                : lang === "vn"
+            href={`${page === "main"
+              ? "/en/main"
+              : lang === "vn"
                 ? `/en${pathname}`
                 : `/en${path}`
-            }`}
+              }`}
           >
             <button
-              className={`${
-                lang === "en"
+                className={`cursor-pointer ${lang === "en"
                   ? "font-Roboto font-bold text-base text-sayyo_wht underline underline-offset-[5px] md720:text-[12px] md720:leading-[15.6px] md720:underline-offset-[3px]"
                   : "font-Roboto font-normal text-sayyo_wht md720:text-[12px] md720:leading-[15.6px]"
-              } `}
+                } `}
             >
               English
             </button>
@@ -72,20 +68,18 @@ const Header = () => {
 
           <div className="w-[1px] h-[13px] border-l-[1px] border-l-[#FFFFFF]/[.4] md720:h-[8.27px]" />
           <Link
-            href={`${
-              page === "main"
-                ? "/ko/main"
-                : lang === "vn"
+            href={`${page === "main"
+              ? "/ko/main"
+              : lang === "vn"
                 ? `/ko${pathname}`
                 : `/ko${path}`
-            }`}
+              }`}
           >
             <button
-              className={`${
-                lang === "ko"
+                className={`cursor-pointer ${lang === "ko"
                   ? "font-Roboto font-bold text-base text-sayyo_wht underline underline-offset-[5px] md720:text-[12px] md720:leading-[15.6px] md720:underline-offset-[3px]"
                   : "font-Roboto font-normal text-sayyo_wht md720:text-[12px] md720:leading-[15.6px]"
-              } `}
+                } `}
             >
               Korean
             </button>
@@ -112,12 +106,12 @@ const HeaderGreen = () => {
           />
         </Link>
         <div className="flex items-center gap-[17px]">
-          <button className="font-Roboto font-bold text-base text-sayyo_wht underline underline-offset-[5px] md720:text-[12px] md720:leading-[15.6px] md720:underline-offset-[3px]">
+          <button className="cursor-pointer font-Roboto font-bold text-base text-sayyo_wht underline underline-offset-[5px] md720:text-[12px] md720:leading-[15.6px] md720:underline-offset-[3px]">
             Vietnamese
           </button>
           <div className="w-[1px] h-[13px] border-l-[1px] border-l-[#FFFFFF]/[.4] md720:h-[8.27px]" />
           <Link href={path}>
-            <button className="font-Roboto font-normal text-sayyo_wht md720:text-[12px] md720:leading-[15.6px]">
+            <button className="cursor-pointer font-Roboto font-normal text-sayyo_wht md720:text-[12px] md720:leading-[15.6px]">
               English
             </button>
           </Link>
@@ -141,12 +135,12 @@ const HeaderEn = () => {
         </Link>
         <div className="flex items-center gap-[17px]">
           <Link href="/">
-            <button className="font-Roboto font-normal text-sayyo_wht md720:text-[12px] md720:leading-[15.6px]">
+            <button className="cursor-pointer font-Roboto font-normal text-sayyo_wht md720:text-[12px] md720:leading-[15.6px]">
               Vietnamese
             </button>
           </Link>
           <div className="w-[1px] h-[13px] border-l-[1px] border-l-[#FFFFFF]/[.4] md720:h-[8.27px]" />
-          <button className="font-Roboto font-bold text-base text-sayyo_wht underline underline-offset-[5px] md720:text-[12px] md720:leading-[15.6px] md720:underline-offset-[3px]">
+          <button className="cursor-pointer font-Roboto font-bold text-base text-sayyo_wht underline underline-offset-[5px] md720:text-[12px] md720:leading-[15.6px] md720:underline-offset-[3px]">
             English
           </button>
         </div>
@@ -177,13 +171,13 @@ const HeaderGreenEn = () => {
         </Link>
         <div className="flex items-center gap-[17px]">
           <Link href={`${path}`}>
-            <button className="font-Roboto font-normal text-sayyo_wht md720:text-[12px] md720:leading-[15.6px]">
+            <button className="cursor-pointer font-Roboto font-normal text-sayyo_wht md720:text-[12px] md720:leading-[15.6px]">
               Vietnamese
             </button>
           </Link>
           <div className="w-[1px] h-[13px] border-l-[1px] border-l-[#FFFFFF]/[.4] md720:h-[8.27px]" />
 
-          <button className="font-Roboto font-bold text-base text-sayyo_wht underline underline-offset-[5px] md720:text-[12px] md720:leading-[15.6px] md720:underline-offset-[3px]">
+          <button className="cursor-pointer font-Roboto font-bold text-base text-sayyo_wht underline underline-offset-[5px] md720:text-[12px] md720:leading-[15.6px] md720:underline-offset-[3px]">
             English
           </button>
         </div>
