@@ -97,7 +97,7 @@ const FooterEn = () => {
       md720:mb-[6px]"
       >
         <Link
-          href="/pp"
+          href="/en/pp"
           className="text-sayyo_subtext font-Roboto text-[16px] leading-[20.8px]
           md1920_1450:text-[0.833vw] md1920:leading-[1.083vw]
           md1450:text-[12px]
@@ -107,7 +107,7 @@ const FooterEn = () => {
         </Link>
         <div className="w-[1px] h-[13px] bg-[rgba(0,0,0,0.1)]" />
         <Link
-          href="/toc"
+          href="/en/toc"
           className="text-sayyo_subtext font-Roboto text-[16px] leading-[20.8px]
           md1920_1450:text-[0.833vw] md1920:leading-[1.083vw]
           md1450:text-[12px]
@@ -174,7 +174,7 @@ const FooterKo = () => {
       md720:mb-[6px]"
       >
         <Link
-          href="/pp"
+          href="/ko/pp"
           className="text-sayyo_subtext font-Roboto text-[16px] leading-[20.8px]
           md1920_1450:text-[0.833vw] md1920:leading-[1.083vw]
           md1450:text-[12px]
@@ -184,7 +184,7 @@ const FooterKo = () => {
         </Link>
         <div className="w-[1px] h-[13px] bg-[rgba(0,0,0,0.1)]" />
         <Link
-          href="/toc"
+          href="/ko/toc"
           className="text-sayyo_subtext font-Roboto text-[16px] leading-[20.8px]
           md1920_1450:text-[0.833vw] md1920:leading-[1.083vw]
           md1450:text-[12px]
