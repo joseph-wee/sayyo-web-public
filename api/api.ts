@@ -1,10 +1,9 @@
 import axios from "axios";
 
-// real
-axios.defaults.baseURL = "https://api.sayyo.mobileto.io/sayyo/v1/";
+const defaultApiBaseUrl = "https://api.sayyo.mobileto.io/sayyo/v1/";
 
-// dev
-// axios.defaults.baseURL = "https://dev.sayyo.mobileto.io/sayyo/v1/";
+axios.defaults.baseURL =
+  process.env.NEXT_PUBLIC_API_BASE_URL || defaultApiBaseUrl;
 
 /** 포스트 상세화면 */
 export const apiGetDetailJob = async (id: number) => {
