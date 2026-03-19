@@ -29,12 +29,7 @@ const nextConfig = {
 
   },
   reactStrictMode: true,
-  // output: 'export',
-  // trailingSlash: true,
-  // images: {
-  //   unoptimized: true
-  // }
-
+  output: "standalone"
 };
 
 export default nextConfig;

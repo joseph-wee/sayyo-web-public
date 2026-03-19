@@ -1,0 +1,10 @@
+node_modules
+.next
+.git
+.DS_Store
+out
+WORK_SUMMARY.md
+pnpm-debug.log*
+.env
+.env.*
+.pnpm-store
