@@ -39,15 +39,12 @@ const assetSrc = (asset: string | { src: string }) =>
 
 export default function Home() {
   const router = useRouter();
-  const isClient = typeof window !== "undefined";
-  const hasRedirected = isClient
-    ? window.sessionStorage.getItem("sayyo-lang-redirected")
-    : null;
-  const browserLang = isClient
-    ? navigator.language.substring(0, 2).toLowerCase()
-    : null;
-  const redirectPath =
-    !isClient || hasRedirected
+
+  useEffect(() => {
+    const hasRedirected =
+      window.sessionStorage.getItem("sayyo-lang-redirected");
+    const browserLang = navigator.language.substring(0, 2).toLowerCase();
+    const redirectPath = hasRedirected
       ? null
       : browserLang === "en"
         ? "/en/main"
@@ -55,18 +52,13 @@ export default function Home() {
           ? "/"
           : null;
 
-  useEffect(() => {
     if (!redirectPath) {
       return;
     }
 
     window.sessionStorage.setItem("sayyo-lang-redirected", "true");
     router.replace(redirectPath);
-  }, [redirectPath, router]);
-
-  if (!isClient || redirectPath) {
-    return null;
-  }
+  }, [router]);
 
   return (
     <>
