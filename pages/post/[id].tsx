@@ -339,55 +339,55 @@ const usePostPage = () => {
                     <div className="mt-[12px] flex gap-[1px] max-h-[217px] min-h-[96px] aspect-[736/217] rounded-[9px] cursor-pointer overflow-hidden bg-sayyo_wht">
                       {data.urlImage.length <= 3
                         ? data.urlImage.map((el: any, j: number) => {
-                            return (
-                              <div
-                                className="flex-1 relative bg-sayyo_wht"
-                                key={`abx${j}`}
-                              >
-                                <img
-                                  src={el}
-                                  alt="sample1"
-                                  className="w-full h-full object-cover object-center"
-                                />
-                              </div>
-                            );
-                          })
+                          return (
+                            <div
+                              className="flex-1 relative bg-sayyo_wht"
+                              key={`abx${j}`}
+                            >
+                              <img
+                                src={el}
+                                alt="sample1"
+                                className="w-full h-full object-cover object-center"
+                              />
+                            </div>
+                          );
+                        })
                         : data.urlImage.map((el: any, j: number) => {
-                            if (j >= 3) {
-                              return;
-                            }
+                          if (j >= 3) {
+                            return;
+                          }
 
-                            if (j === 2) {
-                              return (
-                                <div
-                                  className="flex-1 relative bg-sayyo_wht"
-                                  key={`${j}as`}
-                                >
-                                  <img
-                                    src={el}
-                                    alt="sample2"
-                                    className="w-full h-full object-cover object-center"
-                                  />
-                                  <div className="absolute w-full h-full bg-opacity-40 bg-[#000000]"></div>
-                                  <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[18px] text-sayyo_wht leading-[22.5px]">
-                                    +2
-                                  </span>
-                                </div>
-                              );
-                            }
+                          if (j === 2) {
                             return (
                               <div
                                 className="flex-1 relative bg-sayyo_wht"
-                                key={`abx${j}`}
+                                key={`${j}as`}
                               >
                                 <img
                                   src={el}
-                                  alt="sample1"
+                                  alt="sample2"
                                   className="w-full h-full object-cover object-center"
                                 />
+                                <div className="absolute w-full h-full bg-opacity-40 bg-[#000000]"></div>
+                                <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[18px] text-sayyo_wht leading-[22.5px]">
+                                  +2
+                                </span>
                               </div>
                             );
-                          })}
+                          }
+                          return (
+                            <div
+                              className="flex-1 relative bg-sayyo_wht"
+                              key={`abx${j}`}
+                            >
+                              <img
+                                src={el}
+                                alt="sample1"
+                                className="w-full h-full object-cover object-center"
+                              />
+                            </div>
+                          );
+                        })}
                     </div>
                   </Link>
                 ) : (
@@ -395,7 +395,7 @@ const usePostPage = () => {
                 )}
 
                 <div className="mt-[12px] mb-[6px] border-t-[1px] border-sayyo_bg_more border-dashed" />
-                <div className="flex gap-[8px] items-center">
+                <Link href={`/appHub?${path.split("/")[3]}`} className="flex w-fit gap-[8px] items-center cursor-pointer">
                   {userAvatar && userName ? (
                     <>
                       <img
@@ -410,7 +410,7 @@ const usePostPage = () => {
                   ) : (
                     <div className="h-[56px]"></div>
                   )}
-                </div>
+                </Link>
               </div>
 
               {/** applicnats */}
@@ -440,18 +440,17 @@ const usePostPage = () => {
                       <div className="pr-[21px] text-sayyo_subtext text-[12px] leading-[15.6px]">
                         {Math.min(targetRepeat, data.userApply.length) >
                           fitCount && (
-                          <span className="md767:hidden">More</span>
-                        )}
+                            <span className="md767:hidden">More</span>
+                          )}
                       </div>
                     </div>
                     {/** 오버플로우 숨김 */}
                     <div
                       ref={containerRef}
-                      className={`flex ${
-                        Math.min(targetRepeat, data.userApply.length) > fitCount
-                          ? "justify-between"
-                          : "gap-[12px]"
-                      } w-full px-[16px] pb-[22px] overflow-hidden`}
+                      className={`flex ${Math.min(targetRepeat, data.userApply.length) > fitCount
+                        ? "justify-between"
+                        : "gap-[12px]"
+                        } w-full px-[16px] pb-[22px] overflow-hidden`}
                     >
                       {data.userApply
                         .slice(0, fitCount)
@@ -482,19 +481,19 @@ const usePostPage = () => {
                       {/** 추가 표시: 목표(최대) 개수 또는 데이터 전체를 모두 보여줄 수 없을 때 노출 */}
                       {Math.min(targetRepeat, data.userApply.length) >
                         fitCount && (
-                        <div className="shrink-0 md767:hidden">
-                          <div
-                            className={`flex items-center justify-center rounded-full mb-[8.42px] w-[56px] h-[56px] bg-sayyo_subtext text-sayyo_wht text-[16px] leading-[16px]`}
-                          >
-                            +
-                            {Math.min(targetRepeat, data.userApply.length) -
-                              fitCount}
+                          <div className="shrink-0 md767:hidden">
+                            <div
+                              className={`flex items-center justify-center rounded-full mb-[8.42px] w-[56px] h-[56px] bg-sayyo_subtext text-sayyo_wht text-[16px] leading-[16px]`}
+                            >
+                              +
+                              {Math.min(targetRepeat, data.userApply.length) -
+                                fitCount}
+                            </div>
+                            <div className="text-center text-sayyo_l2 text-[12px] leading-[15.6px]">
+                              More
+                            </div>
                           </div>
-                          <div className="text-center text-sayyo_l2 text-[12px] leading-[15.6px]">
-                            More
-                          </div>
-                        </div>
-                      )}
+                        )}
                     </div>
                   </div>
                 </Link>
