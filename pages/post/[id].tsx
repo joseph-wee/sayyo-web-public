@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/router";
 
 import { apiGetDetailJob, apiGetUserInfo } from "../../api/api";
 import {
@@ -22,7 +22,6 @@ type apiRes = {};
 
 const usePostPage = () => {
   const [share, setShare] = useState(false); // 공유하기 ticker 값
-  const url = usePathname(); // 현재 url
   const [data, setData] = useState<any>();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -30,8 +29,9 @@ const usePostPage = () => {
   const [userAvatar, setUserAvatar] = useState<string>("");
   const [userName, setUserName] = useState<string>("");
   const router = useRouter();
-
-  const path = usePathname();
+  const postId =
+    typeof router.query.id === "string" ? router.query.id : undefined;
+  const appHubHref = postId ? `/appHub?${postId}` : "/appHub";
 
   /** 임시 옵션값 api 아직 없음. */
   const [tempOption, setTempOption] = useState<string>("offer");
@@ -76,11 +76,11 @@ const usePostPage = () => {
 
   /** 상세화면 호출 핸들러 실행 */
   useEffect(() => {
-    if (!url) {
+    if (!router.isReady || !postId) {
       return;
     }
 
-    apiGetDetailJob(Number(url.split("/")[2])).then((res) => {
+    apiGetDetailJob(Number(postId)).then((res) => {
       const userLang = getSupportedLanguage();
 
       const matchedPost = res.data.data.translationJobPosts.find(
@@ -100,7 +100,7 @@ const usePostPage = () => {
       setResCode(res.data.responseCode);
       getUserInfoHandler(res.data.data.userId);
     });
-  }, [url]);
+  }, [postId, router.isReady]);
 
   // // id에 해당하는 포스트가 없을 때,
   // if (resCode === "404") {
@@ -335,7 +335,7 @@ const usePostPage = () => {
 
                 {/** image */}
                 {data.urlImage && data.urlImage.length !== 0 ? (
-                  <Link href={`/appHub?${path.split("/")[3]}`}>
+                  <Link href={appHubHref}>
                     <div className="mt-[12px] flex gap-[1px] max-h-[217px] min-h-[96px] aspect-[736/217] rounded-[9px] cursor-pointer overflow-hidden bg-sayyo_wht">
                       {data.urlImage.length <= 3
                         ? data.urlImage.map((el: any, j: number) => {
@@ -395,7 +395,7 @@ const usePostPage = () => {
                 )}
 
                 <div className="mt-[12px] mb-[6px] border-t-[1px] border-sayyo_bg_more border-dashed" />
-                <Link href={`/appHub?${path.split("/")[3]}`} className="flex w-fit gap-[8px] items-center cursor-pointer">
+                <Link href={appHubHref} className="flex w-fit gap-[8px] items-center cursor-pointer">
                   {userAvatar && userName ? (
                     <>
                       <img
@@ -415,7 +415,7 @@ const usePostPage = () => {
 
               {/** applicnats */}
               {data.userApply.length === 0 ? (
-                <Link href={`/appHub?${path.split("/")[3]}`}>
+                <Link href={appHubHref}>
                   <div className="mb-[20px] h-[142px] flex items-center justify-center bg-sayyo_wht cursor-pointer">
                     <div className="text-sayyo_subtext text-[16px] leading-[20.8px]">
                       No applicants yet
@@ -423,7 +423,7 @@ const usePostPage = () => {
                   </div>
                 </Link>
               ) : (
-                <Link href={`/appHub?${path.split("/")[3]}`}>
+                <Link href={appHubHref}>
                   <div className="mb-[20px] pt-[9.5px] min-h-[167px] box-border bg-sayyo_wht cursor-pointer">
                     <div className="flex justify-between items-center mb-[19px]">
                       <div className="flex pl-[20px] text-[16px] font-bold leading-[20.8px]">
@@ -505,7 +505,7 @@ const usePostPage = () => {
 
         "
             >
-              <Link href={`/appHub?${path.split("/")[3]}`}>
+	              <Link href={appHubHref}>
                 <button className="w-full h-[48px] text-sayyo_wht text-[14px] font-bold leading-[18.2px] rounded-[8px] bg-sayyo_primary">
                   {tempOption !== "request" && <span>I want it</span>}
                   {tempOption === "request" && <span>Apply</span>}
