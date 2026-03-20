@@ -4,23 +4,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <meta name="description" content="sayyo web" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta
-          property="og:image"
-          content="https://mobileto-files.s3.amazonaws.com/og_image_sayyo.png"
-        />
-        {/* <meta
-      property="og:image"
-      content="https://d1vnx0h70erqwv.cloudfront.net/_next/static/media/logo_mobileto.97fc625a.png"
-    /> */}
-        <meta property="og:title" content="Sayyo" />
-
-        {/* //카카오톡에 링크를 전송하면 보이는 내용을 text로 설정 */}
-        <meta
-          property="og:description"
-          content="Kết nối các người giải quyết vấn đề địa phương!"
-        />
         <link rel="icon" href="/favicon.ico" />
 
         {/** 1. 즐겨찾기 아이콘?  2.아이패드 아이콘?*/}
