@@ -1,68 +1,62 @@
-on:
-  # push할 때마다 액션 실행하게 하려면 # 제거
-  #push:
-  #branches:
-  #-develop
+name: Deploy EC2
 
-  workflow_dispatch: # 수동 실행 설정, 깃허브 액션 페이지에서 클릭으로 실행 가능
-    inputs:
-      component:
-        description: "What component"
-        required: true
-        default: "web-dev"
-      profile:
-        description: "What profile"
-        required: true
-        default: "deploy-dev"
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - develop
+
+permissions:
+  id-token: write
+  contents: read
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: ["20.x"]
+
+    env:
+      AWS_REGION: ${{ secrets.AWS_REGION }}
+      ECR_REGISTRY: ${{ secrets.ECR_REGISTRY }}
+      ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY }}
+      IMAGE_TAG: ${{ github.sha }}
 
     steps:
-      - name: Checkout source code.
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+      - name: Configure AWS credentials with OIDC
+        uses: aws-actions/configure-aws-credentials@v5
         with:
-          node-version: ${{ matrix.node-version }}
-          cache: "yarn"
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ secrets.AWS_REGION }}
 
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
+      - name: Login to ECR
+        uses: aws-actions/amazon-ecr-login@v2
 
-      - name: Run build
-        run: yarn build
-        env:
-          NEXT_PUBLIC_GOOGLE_ANALYTICS_ID: ${{ secrets.GA_ID }}
+      - name: Build Docker image
+        run: |
+          docker build \
+            --build-arg NEXT_PUBLIC_GOOGLE_ANALYTICS_ID=${{ secrets.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID }} \
+            --build-arg NEXT_PUBLIC_API_BASE_URL=${{ secrets.NEXT_PUBLIC_API_BASE_URL }} \
+            -t $ECR_REGISTRY/$ECR_REPOSITORY:latest \
+            -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG \
+            .
 
-      - name: Current timestamp
-        id: timestamp
-        run: echo "date=$(date +'%Y-%m-%dT%H-%M-%S-%3NZ')" >> $GITHUB_OUTPUT
+      - name: Push Docker image
+        run: |
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
-      - name: Generate deployment package # (1)
-        run: zip ./deploy.zip -r * .[^.]* node_modules
-
-      # --- zip 파일 확인을 위함 ---
-      - name: Upload deployment package artifact
-        uses: actions/upload-artifact@v4
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@v1.2.0
         with:
-          name: deploy-package-${{ steps.timestamp.outputs.date }}
-          path: ./deploy.zip
-          retention-days: 5
-
-      - name: Deploy to EB
-        uses: einaregilsson/beanstalk-deploy@v22
-        with:
-          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          application_name: mobileto-sayyo-web
-          environment_name: Mobileto-sayyo-web-env
-          version_label: "${{ steps.timestamp.outputs.date }}"
-          region: us-east-1
-          deployment_package: deploy.zip
-          wait_for_environment_recovery: 300
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            aws ecr get-login-password --region ${{ secrets.AWS_REGION }} | docker login --username AWS  --password-stdin ${{ secrets.ECR_REGISTRY }}
+            docker pull ${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_REPOSITORY }}:latest
+            docker stop sayyo-web || true
+            docker rm sayyo-web || true
+            docker run -d --name sayyo-web -p 8080:8080 ${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_REPOSITORY }}:latest
+            curl -I http://localhost
