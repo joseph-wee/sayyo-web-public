@@ -47,16 +47,55 @@ jobs:
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
-      - name: Deploy to EC2
-        uses: appleboy/ssh-action@v1.2.0
-        with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USER }}
-          key: ${{ secrets.EC2_SSH_KEY }}
-          script: |
-            aws ecr get-login-password --region ${{ secrets.AWS_REGION }} | docker login --username AWS  --password-stdin ${{ secrets.ECR_REGISTRY }}
-            docker pull ${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_REPOSITORY }}:latest
-            docker stop sayyo-web || true
-            docker rm sayyo-web || true
-            docker run -d --name sayyo-web -p 8080:8080 ${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_REPOSITORY }}:latest
-            curl -I http://localhost
+      - name: Deploy to EC2 with SSM
+        run: |
+          COMMAND_ID=$(aws ssm send-command \
+            --region "$AWS_REGION" \
+            --document-name "AWS-RunShellScript" \
+            --targets "Key=tag:${{ secrets.DEPLOY_TARGET_TAG_KEY }},Values=${{ secrets.DEPLOY_TARGET_TAG_VALUE }}" \
+            --comment "Deploy sayyo-web from GitHub Actions" \
+            --parameters commands='[
+              "aws ecr get-login-password --region '${{ secrets.AWS_REGION }}' | docker login --username AWS --password-stdin '${{ secrets.ECR_REGISTRY }}'",
+              "docker pull '${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_REPOSITORY }}:latest'",
+              "docker stop sayyo-web || true",
+              "docker rm sayyo-web || true",
+              "docker run -d --name sayyo-web -p 8080:8080 '${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_REPOSITORY }}:latest'",
+              "curl -I http://localhost"
+            ]' \
+            --query "Command.CommandId" \
+            --output text)
+
+          echo "COMMAND_ID=$COMMAND_ID" >> $GITHUB_ENV
+
+      - name: Wait for SSM command completion
+        run: |
+          for i in {1..30}; do
+            STATUS=$(aws ssm list-command-invocations \
+              --region "$AWS_REGION" \
+              --command-id "$COMMAND_ID" \
+              --details \
+              --query "CommandInvocations[0].Status" \
+              --output text)
+
+            echo "Current SSM status: $STATUS"
+
+            if [ "$STATUS" = "Success" ]; then
+              exit 0
+            fi
+
+            if [ "$STATUS" = "Cancelled" ] || [ "$STATUS" = "Failed" ] || [ "$STATUS" = "TimedOut" ] || [ "$STATUS" = "Cancelling" ]; then
+              aws ssm list-command-invocations \
+                --region "$AWS_REGION" \
+                --command-id "$COMMAND_ID" \
+                --details
+              exit 1
+            fi
+
+            sleep 10
+          done
+
+          aws ssm list-command-invocations \
+            --region "$AWS_REGION" \
+            --command-id "$COMMAND_ID" \
+            --details
+          exit 1
