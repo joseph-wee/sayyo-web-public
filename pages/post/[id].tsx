@@ -26,6 +26,7 @@ const DEFAULT_META_DESCRIPTION =
   "Kết nối các người giải quyết vấn đề địa phương!";
 
 type PostPageProps = {
+  initialPostData: any | null;
   metaDescription: string;
   metaImage: string;
   metaTitle: string;
@@ -45,26 +46,44 @@ const buildAbsoluteUrl = (host?: string, path = "") => {
   return `${protocol}://${host}${path}`;
 };
 
-const getDomainFromUrl = (url: string) => {
-  try {
-    return new URL(url).hostname;
-  } catch {
-    return "";
+const getLocalizedPostCopy = (postData: any) => {
+  if (!postData) {
+    return {
+      description: "",
+      title: "",
+    };
   }
+
+  const browserLang = navigator.language;
+  const langCode = browserLang.substring(0, 2).toLowerCase();
+  const userLang =
+    langCode === "ko" ? "KO" : langCode === "en" ? "EN" : langCode === "vi" ? "VI" : "EN";
+
+  const matchedPost = postData.translationJobPosts?.find(
+    (post: any) => post.languageTranslation === userLang,
+  );
+
+  return {
+    description: matchedPost
+      ? matchedPost.descriptionTranslation
+      : postData.description,
+    title: matchedPost ? matchedPost.titleTranslation : postData.title,
+  };
 };
 
 const usePostPage = ({
+  initialPostData,
   metaDescription,
   metaImage,
   metaTitle,
   metaUrl,
 }: PostPageProps) => {
-  const twitterDomain = getDomainFromUrl(metaUrl);
-
   const [share, setShare] = useState(false); // 공유하기 ticker 값
-  const [data, setData] = useState<any>();
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
+  const [data, setData] = useState<any>(initialPostData);
+  const [title, setTitle] = useState(initialPostData?.title ?? "");
+  const [description, setDescription] = useState(
+    initialPostData?.description ?? "",
+  );
   const [resCode, setResCode] = useState<string>("");
   const [userAvatar, setUserAvatar] = useState<string>("");
   const [userName, setUserName] = useState<string>("");
@@ -86,26 +105,6 @@ const usePostPage = ({
     setTimeout(() => setShare(false), 2000);
   };
 
-  /**
-   * 사용자의 브라우저 언어를 확인하여 EN, KO, VI 중 하나를 반환합니다.
-   * 일치하는 언어가 없을 경우 기본값(Default)을 설정할 수 있습니다.
-   */
-  function getSupportedLanguage() {
-    const browserLang = navigator.language;
-    const langCode = browserLang.substring(0, 2).toLowerCase();
-
-    switch (langCode) {
-      case "ko":
-        return "KO";
-      case "en":
-        return "EN";
-      case "vi":
-        return "VI";
-      default:
-        return "EN";
-    }
-  }
-
   /** 유저 정보 호출 */
   function getUserInfoHandler(id: number) {
     apiGetUserInfo(id).then((res) => {
@@ -116,31 +115,33 @@ const usePostPage = ({
 
   /** 상세화면 호출 핸들러 실행 */
   useEffect(() => {
-    if (!router.isReady || !postId) {
+    if (!router.isReady || !postId || data) {
       return;
     }
 
     apiGetDetailJob(Number(postId)).then((res) => {
-      const userLang = getSupportedLanguage();
+      const localizedCopy = getLocalizedPostCopy(res.data.data);
 
-      const matchedPost = res.data.data.translationJobPosts.find(
-        (post: any) => post.languageTranslation === userLang,
-      );
-
-      const title = matchedPost
-        ? matchedPost.titleTranslation
-        : res.data.data.title;
-      const description = matchedPost
-        ? matchedPost.descriptionTranslation
-        : res.data.data.description;
-
-      setTitle(title);
-      setDescription(description);
+      setTitle(localizedCopy.title);
+      setDescription(localizedCopy.description);
       setData(res.data.data);
       setResCode(res.data.responseCode);
-      getUserInfoHandler(res.data.data.userId);
     });
-  }, [postId, router.isReady]);
+  }, [data, postId, router.isReady]);
+
+  useEffect(() => {
+    if (!data) {
+      return;
+    }
+
+    const localizedCopy = getLocalizedPostCopy(data);
+    setTitle(localizedCopy.title);
+    setDescription(localizedCopy.description);
+
+    if (data.userId) {
+      getUserInfoHandler(data.userId);
+    }
+  }, [data]);
 
   // // id에 해당하는 포스트가 없을 때,
   // if (resCode === "404") {
@@ -252,11 +253,9 @@ const usePostPage = ({
         <meta property="og:image" content={metaImage} />
         <meta property="og:url" content={metaUrl} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:domain" content={twitterDomain} />
         <meta name="twitter:title" content={metaTitle} />
         <meta name="twitter:description" content={metaDescription} />
         <meta name="twitter:image" content={metaImage} />
-        <meta name="twitter:url" content={metaUrl} />
       </Head>
 
       {/** data 받아오면 렌더링 */}
@@ -590,6 +589,7 @@ export const getServerSideProps: GetServerSideProps<PostPageProps> = async (
   if (!postId) {
     return {
       props: {
+        initialPostData: null,
         metaDescription: DEFAULT_META_DESCRIPTION,
         metaImage: DEFAULT_META_IMAGE,
         metaTitle: "Sayyo",
@@ -607,6 +607,7 @@ export const getServerSideProps: GetServerSideProps<PostPageProps> = async (
 
     return {
       props: {
+        initialPostData: data ?? null,
         metaDescription,
         metaImage,
         metaTitle,
@@ -616,6 +617,7 @@ export const getServerSideProps: GetServerSideProps<PostPageProps> = async (
   } catch {
     return {
       props: {
+        initialPostData: null,
         metaDescription: DEFAULT_META_DESCRIPTION,
         metaImage: DEFAULT_META_IMAGE,
         metaTitle: "Sayyo",
