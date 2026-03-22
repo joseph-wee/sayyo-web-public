@@ -19,10 +19,6 @@ const useAppHub = () => {
   const timerRef = useRef<any>(null);
   const [state, setState] = useState(0);
 
-  // TODO: 나중에 앱링크, 유니버셜링크 받아서 브라우저별 세팅 해야 함
-
-  // TODO: 주소 예외처리 해놓기
-  // 앱스토어, 애플 스토어 스킴으로 할지 아직 미정
   /** android link */
   const androidLink = () => {
     window.location.href = `sayyo://post/detail?id=${window.location.search.slice(
@@ -157,9 +153,6 @@ const useAppHub = () => {
             </span>
           </button>
 
-          {/* <Image quality={100} src={btn_img_googlePlay} alt="btn_googlePlay" width={260} /> */}
-
-          {/* <Image quality={100} src={btn_img_appStore} alt="btn_appStore" width={260} /> */}
         </div>
         <p className="text-sayyo_wht font-Roboto text-[13px] leading-[16.9px]">
           2024 Sayyo All Rights Reserved.
