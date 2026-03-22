@@ -16,12 +16,9 @@ import {
   icon_sale,
   icon_sports,
   img_chat_vn,
-  img_discover_vn,
   img_man,
   img_offer_vn,
   img_place,
-  img_post_vn,
-  img_profile_vn,
   img_qr_and,
   img_qr_ios,
   img_request_vn,
@@ -32,7 +29,7 @@ import {
   text_app_store,
   text_google_play,
 } from "../assets";
-import { Background, Footer, Header } from "../components";
+import { Background, Footer, Header, Seo } from "../components";
 
 const assetSrc = (asset: string | { src: string }) =>
   typeof asset === "string" ? asset : asset.src;
@@ -61,57 +58,7 @@ export default function Home() {
 
   return (
     <>
-      <Head>
-        <title>Sayyo</title>
-        <meta name="description" content="sayyo web" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta
-          property="og:image"
-          content="https://mobileto-files.s3.amazonaws.com/og_image_sayyo.png"
-        />
-        {/* <meta
-      property="og:image"
-      content="https://d1vnx0h70erqwv.cloudfront.net/_next/static/media/logo_mobileto.97fc625a.png"
-    /> */}
-        <meta property="og:title" content="Sayyo" />
-
-        {/* //카카오톡에 링크를 전송하면 보이는 내용을 text로 설정 */}
-        <meta
-          property="og:description"
-          content="Kết nối các người giải quyết vấn đề địa phương!"
-        />
-        <link rel="icon" href="/favicon.ico" />
-
-        {/** 1. 즐겨찾기 아이콘?  2.아이패드 아이콘?*/}
-        {/* <link rel="shortcut icon" href="http://test.repunch.io/favicon.ico" />
-
-    <link
-      rel="apple-touch-startup-image"
-      href="http://test.repunch.io/favicon.ico"
-    /> */}
-
-        {/** 안드로이드 현재 폰에서는 되는중 탭안되면 고해상도 아이콘 소스코드 추가하면 될 듯? */}
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/apple-touch-icon.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/favicon-16x16.png"
-        />
-        <link rel="manifest" href="/site.webmanifest" />
-        <link rel="mask-icon" href="/safari-pinned-tab.svg" />
-
-      </Head>
+      <Seo description="Kết nối các người giải quyết vấn đề địa phương!" />
 
       <div className="relative pb-[264px] md720:pb-[173px] tall:pb-0">
         <Header />
@@ -324,10 +271,6 @@ export default function Home() {
               Sayyo, bạn có thể giao dịch các nhiệm vụ và nhu cầu một cách an
               toàn và nhanh chóng trong nhiều lĩnh vực khác nhau với những người
               hàng xóm đã được xác minh.
-              {/* Sayyo, you can safely and quickly transact tasks and needs in&nbsp;
-            <br className="hidden md805:block" />
-            various <br className="md805:hidden" /> fields with verified
-            neighbors. */}
             </p>
           </div>
 
