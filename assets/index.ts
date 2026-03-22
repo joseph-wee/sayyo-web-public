@@ -35,8 +35,8 @@ export { default as img_discover_vn } from "./img_discover_vn.webp";
 export { default as img_post_vn } from "./img_post_vn.webp";
 
 export { default as img_back_middle } from "./img_back_middle.webp";
-export { default as img_qr_and } from "./img_qr_and.webp";
-export { default as img_qr_ios } from "./img_qr_ios.webp";
+export { default as img_qr_and } from "./img_qr_and.png";
+export { default as img_qr_ios } from "./img_qr_ios.png";
 
 export { default as ic_pay } from "./ic_pay.svg";
 export { default as ic_pay_offer } from "./ic_pay_offer.svg";
