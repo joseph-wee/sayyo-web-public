@@ -39,9 +39,9 @@ const Header = () => {
         <div className="flex items-center gap-[17px]">
           <Link href={`${page === "main" ? "/" : path}`}>
             <button
-                className={`cursor-pointer ${lang === "vn"
-                  ? "font-Roboto font-bold text-base text-sayyo_wht underline underline-offset-[5px] md720:text-[12px] md720:leading-[15.6px] md720:underline-offset-[3px]"
-                  : "font-Roboto font-normal text-sayyo_wht md720:text-[12px] md720:leading-[15.6px]"
+              className={`cursor-pointer ${lang === "vn"
+                ? "font-Roboto font-bold text-base text-sayyo_wht underline underline-offset-[5px] md720:text-[12px] md720:leading-[15.6px] md720:underline-offset-[3px]"
+                : "font-Roboto font-normal text-sayyo_wht md720:text-[12px] md720:leading-[15.6px]"
                 } `}
             >
               Vietnamese
@@ -57,9 +57,9 @@ const Header = () => {
               }`}
           >
             <button
-                className={`cursor-pointer ${lang === "en"
-                  ? "font-Roboto font-bold text-base text-sayyo_wht underline underline-offset-[5px] md720:text-[12px] md720:leading-[15.6px] md720:underline-offset-[3px]"
-                  : "font-Roboto font-normal text-sayyo_wht md720:text-[12px] md720:leading-[15.6px]"
+              className={`cursor-pointer ${lang === "en"
+                ? "font-Roboto font-bold text-base text-sayyo_wht underline underline-offset-[5px] md720:text-[12px] md720:leading-[15.6px] md720:underline-offset-[3px]"
+                : "font-Roboto font-normal text-sayyo_wht md720:text-[12px] md720:leading-[15.6px]"
                 } `}
             >
               English
@@ -76,9 +76,9 @@ const Header = () => {
               }`}
           >
             <button
-                className={`cursor-pointer ${lang === "ko"
-                  ? "font-Roboto font-bold text-base text-sayyo_wht underline underline-offset-[5px] md720:text-[12px] md720:leading-[15.6px] md720:underline-offset-[3px]"
-                  : "font-Roboto font-normal text-sayyo_wht md720:text-[12px] md720:leading-[15.6px]"
+              className={`cursor-pointer ${lang === "ko"
+                ? "font-Roboto font-bold text-base text-sayyo_wht underline underline-offset-[5px] md720:text-[12px] md720:leading-[15.6px] md720:underline-offset-[3px]"
+                : "font-Roboto font-normal text-sayyo_wht md720:text-[12px] md720:leading-[15.6px]"
                 } `}
             >
               Korean
@@ -153,7 +153,6 @@ const HeaderEn = () => {
 const HeaderGreenEn = () => {
   const router = useRouter();
   const path = router.pathname.substring(3);
-  console.log(path);
 
   return (
     <header className="absolute z-20 w-[100%] bg-sayyo_primary ">
