@@ -4,22 +4,6 @@ import { apiPostPrivacyPolicy, apiPostTermsOfCondition } from "../api/api";
 import { Footer, Header } from "../components";
 
 const usePp = () => {
-  const [content, setContent] = useState<string>("");
-
-  // apiPostPrivacyPolicy().then((res) => {
-  //   console.log(res);
-  // });
-
-  // 현재 Unauthorized로 인증이 안되어있어서 401 에러가 뜸
-
-  // useEffect(() => {
-  //   apiPostPrivacyPolicy().then((res) => {
-  //     console.log(res);
-  //   });
-  //   apiPostTermsOfCondition().then((res) => {
-  //     console.log(res);
-  //   });
-  // }, []);
 
   return (
     <>
