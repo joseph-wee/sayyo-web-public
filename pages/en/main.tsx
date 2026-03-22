@@ -14,14 +14,10 @@ import {
   icon_recruit,
   icon_sale,
   icon_sports,
-  img_chat,
   img_chat_en,
-  img_discover,
   img_man,
   img_offer_en,
   img_place,
-  img_post,
-  img_profile,
   img_qr_and,
   img_qr_ios,
   img_request_en,
@@ -32,7 +28,7 @@ import {
   text_app_store,
   text_google_play,
 } from "../../assets";
-import { Background, Footer, Header } from "../../components";
+import { Background, Footer, Header, Seo } from "../../components";
 
 const assetSrc = (asset: string | { src: string }) =>
   typeof asset === "string" ? asset : asset.src;
@@ -62,6 +58,8 @@ export default function Home() {
 
   return (
     <>
+      <Seo description="Connect local problem solvers!" />
+
       <div className="relative pb-[264px] md720:pb-[173px] tall:pb-0">
         <Header />
         <Background />
@@ -239,7 +237,7 @@ export default function Home() {
             md970:text-[10px]
             md720:w-[75px] md720:text-[10px] md720:leading-[13px] md720:tracking-[-0.2px]"
               >
-                Sell ​​the items you can sell to those around you and buy the
+                Sell the items you can sell to those around you and buy the
                 items you need.
               </div>
             </div>

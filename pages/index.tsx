@@ -168,19 +168,19 @@ export default function Home() {
           <div className="relative mx-auto mb-[238px] pt-[48px] max-w-[1180px] md1920:mb-[12.396vw] md1920:pt-[2.5vw] md1920:w-[61.458vw] md720:mb-[55.34px] md720:pt-[7.18px]">
             <img
               src={assetSrc(img_man)}
-              alt=""
+              alt="img man"
               aria-hidden
               className="absolute top-[17px] left-[36px] md1920:top-[0.885vw] md1920:left-[1.875vw] md1920:w-[10.677vw] md720:w-[55.68px] md720:h-[47.51px] md720:left-0 md720:top-[4.71px]"
             />
             <img
               src={assetSrc(img_place)}
-              alt=""
+              alt="img_place"
               aria-hidden
               className="absolute top-[160px] left-[208px] md1920:top-[8.333vw] md1920:left-[10.833vw] md1920:w-[4.27vw] md720:w-[22.7px] md720:h-[22.7px] md720:top-[44.33px] md720:left-[47.65px]"
             />
             <img
               src={assetSrc(img_woman)}
-              alt=""
+              alt="img_woman"
               aria-hidden
               className="absolute top-0 right-0 md1920:w-[14.479vw] md720:w-[75.69px] md720:h-[63.16px]"
             />

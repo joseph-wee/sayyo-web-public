@@ -14,14 +14,10 @@ import {
   icon_recruit,
   icon_sale,
   icon_sports,
-  img_chat,
   img_chat_ko,
-  img_discover,
   img_man,
   img_offer_ko,
   img_place,
-  img_post,
-  img_profile,
   img_qr_and,
   img_qr_ios,
   img_request_ko,
@@ -32,7 +28,7 @@ import {
   text_app_store,
   text_google_play,
 } from "../../assets";
-import { Background, Footer, Header } from "../../components";
+import { Background, Footer, Header, Seo } from "../../components";
 
 const assetSrc = (asset: string | { src: string }) =>
   typeof asset === "string" ? asset : asset.src;
@@ -62,6 +58,8 @@ export default function Home() {
 
   return (
     <>
+      <Seo description="지역 문제 해결자들을 연결하세요!" />
+
       <div className="relative pb-[264px] md720:pb-[173px] tall:pb-0">
         <Header />
         <Background />
