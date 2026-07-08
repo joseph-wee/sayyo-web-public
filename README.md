@@ -1,40 +1,37 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Sayyo 앱 소개 및 게시글 공유용 웹페이지 (이전 버전)
 
-## Getting Started
+## 개요
 
-First, run the development server:
+- 베트남의 지역 기반 재능 및 중고 거래 플랫폼 서비스인 Sayyo 어플리케이션의 소개 홈페이지입니다.
+- 앱에서 외부로 게시글을 공유하고 싶을 때 사용하는 공유용 웹페이지가 포함되어 있습니다.
+- 현재 상용 버전이 아닌 이전 버전입니다.
+- <a href="https://sayyo-web-public.pages.dev/" target="_blank" rel="noopener">Web</a>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## 프로젝트 일정
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+- 2024.9 ~ 2026.4
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## 내용
 
-## Learn More
+### 메인 페이지
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<img width="412" height="632" alt="img_sayyo_main_edit" src="https://github.com/user-attachments/assets/bc76d43d-a9a1-4fac-afe3-8ac0a371ddd6" />
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### 공유용 웹 페이지
 
-## Deploy on Vercel
+<img width="500" height="760" alt="img_sayyo_share" src="https://github.com/user-attachments/assets/8b5a7d27-062d-4a21-bd1c-3da9af4848f4" />
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 기술 스택
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Next.js
+- Typescript
+- Axios
+- Tailwind CSS
+
+## 인프라 구조
+
+## CI/CD
