@@ -41,7 +41,6 @@ const config: Config = {
       md1920_1180: { max: "1920px", min: "1181px" },
       md1920_1450: { max: "1920px", min: "1451px" },
       md1920: { max: "1919px", min: "721px" },
-      tall: { raw: "(max-height: 1151px)" },
       md805: { max: "805px" },
     },
     backgroundImage: {

@@ -60,7 +60,7 @@ export default function Home() {
     <>
       <Seo description="Connect local problem solvers!" />
 
-      <div className="relative pb-[264px] md720:pb-[173px] tall:pb-0">
+      <div className="relative pb-[264px] md720:pb-[173px] ">
         <Header />
         <Background />
         {/** content */}

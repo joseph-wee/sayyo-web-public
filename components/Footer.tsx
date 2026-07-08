@@ -10,7 +10,7 @@ const assetSrc = (asset: string | { src: string }) =>
 const Footer = () => {
   return (
     <footer
-      className="absolute bottom-0 w-[100%] pt-[53px] pb-[50px] bg-sayyo_bg tall:static
+      className="absolute bottom-0 w-[100%] pt-[53px] pb-[50px] bg-sayyo_bg 
     md720:pt-[20px] md720:pb-[23px]
     "
     >
@@ -87,7 +87,7 @@ const Footer = () => {
 const FooterEn = () => {
   return (
     <footer
-      className="absolute bottom-0 w-[100%] pt-[53px] pb-[50px] bg-sayyo_bg tall:static
+      className="absolute bottom-0 w-[100%] pt-[53px] pb-[50px] bg-sayyo_bg 
     md720:pt-[20px] md720:pb-[23px]
     "
     >
@@ -164,7 +164,7 @@ const FooterEn = () => {
 const FooterKo = () => {
   return (
     <footer
-      className="absolute bottom-0 w-[100%] pt-[53px] pb-[50px] bg-sayyo_bg tall:static
+      className="absolute bottom-0 w-[100%] pt-[53px] pb-[50px] bg-sayyo_bg 
     md720:pt-[20px] md720:pb-[23px]
     "
     >

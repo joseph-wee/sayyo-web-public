@@ -60,7 +60,7 @@ export default function Home() {
     <>
       <Seo description="Kết nối các người giải quyết vấn đề địa phương!" />
 
-      <div className="relative pb-[264px] md720:pb-[173px] tall:pb-0">
+      <div className="relative pb-[264px] md720:pb-[173px] ">
         <Header />
         <Background />
         {/** content */}
