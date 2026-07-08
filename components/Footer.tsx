@@ -40,7 +40,7 @@ const Footer = () => {
         </Link>
         <div className="w-[1px] h-[13px] bg-[rgba(0,0,0,0.1)]" />
         <button
-          className="flex items-center"
+          className="flex items-center cursor-pointer"
           onClick={() => window.open("https://www.instagram.com/sayyo.viet")}
         >
           <img
@@ -117,7 +117,7 @@ const FooterEn = () => {
         </Link>
         <div className="w-[1px] h-[13px] bg-[rgba(0,0,0,0.1)]" />
         <button
-          className="flex items-center"
+          className="flex items-center cursor-pointer"
           onClick={() => window.open("https://www.instagram.com/sayyo.viet")}
         >
           <img
@@ -194,7 +194,7 @@ const FooterKo = () => {
         </Link>
         <div className="w-[1px] h-[13px] bg-[rgba(0,0,0,0.1)]" />
         <button
-          className="flex items-center"
+          className="flex items-center cursor-pointer"
           onClick={() => window.open("https://www.instagram.com/sayyo.viet")}
         >
           <img
