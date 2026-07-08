@@ -34,4 +34,8 @@
 
 ## 인프라 구조
 
+![Sayyo 인프라 구조도](Sayyo_Architecture.drawio.svg)
+
 ## CI/CD
+
+![Sayyo CI/CD 구조도](Sayyo_CI_CD.drawio.svg)
